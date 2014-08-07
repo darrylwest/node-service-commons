@@ -5,7 +5,7 @@ Common REST services for node / web applications
 
 ## Introduction
 
-MVC components to support REST services...
+Components to support REST services and web service containers...
 
 ## Controllers
 
