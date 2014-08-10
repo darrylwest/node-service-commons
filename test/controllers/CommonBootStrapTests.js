@@ -1,7 +1,7 @@
 /**
  * @class CommonBootStrapTests
  *
- * @author: darryl.west@raincitysoftware.com
+ * @author: darryl.west@roundpeg.com
  * @created: 8/10/14 3:40 PM
  */
 var should = require('chai').should(),
@@ -11,8 +11,10 @@ var should = require('chai').should(),
 describe('CommonBootStrap', function() {
     'use strict';
 
-    var logfile = '/tmp/junk.log';
-    var createCommandLine = function(env) {
+    var logfile = '/tmp/junk.log',
+        createCommandLine;
+
+    createCommandLine = function(env) {
         if (!env) env = 'test';
         var args = [
             "/usr/local/bin/node",
