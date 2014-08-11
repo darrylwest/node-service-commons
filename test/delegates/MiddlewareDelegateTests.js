@@ -6,7 +6,7 @@
  */
 var should = require('chai').should(),
     dash = require('lodash' ),
-    Logger = require( 'simple-node-logger' ).mocks.MockLogger,
+    MockLogger = require('simple-node-logger' ).mocks.MockLogger,
     MiddlewareDelegate = require('../../lib/delegates/MiddlewareDelegate');
 
 describe('MiddlewareDelegate', function() {
@@ -15,7 +15,7 @@ describe('MiddlewareDelegate', function() {
     var createOptions = function() {
         var opts = {};
 
-        opts.log = new Logger.createLogger('MiddlewareDelegate');
+        opts.log = new MockLogger.createLogger('MiddlewareDelegate');
         opts.appkey = 'ae3b1d1c-7a44-45f6-82f5-0a4eb789ae10';
 
         return opts;
