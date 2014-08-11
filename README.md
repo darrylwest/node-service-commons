@@ -85,4 +85,4 @@ The IndexPageService presents a very simple HTML page displaying the application
 WebStatusService is used to report the web container's current status.  Values include up-time, available memory, the environment name, version, etc.
 
 - - -
-<p><small><em>Copyright © 2014, roundpeg | Version 0.90.10</em></small></p>
+<p><small><em>Copyright © 2014, roundpeg | Version 0.90.11</em></small></p>

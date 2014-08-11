@@ -1,6 +1,6 @@
 {
-  "name": "nod-service-commons",
-  "version": "0.90.10",
+  "name": "node-service-commons",
+  "version": "0.90.11",
   "description": "Common REST services used for web applications.",
   "main": "./index.js",
   "repository": {
