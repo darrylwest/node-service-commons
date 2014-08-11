@@ -44,4 +44,15 @@ describe('AbstractApplicationFactory', function() {
             });
         });
     });
+
+    describe('createLogger', function() {
+        var opts =  createOptions();
+
+        it('should create a simple console logger', function() {
+            var factory = new AbstractApplicationFactory( opts ),
+                log = factory.createLogger( 'Test', 'debug' );
+
+            should.exist( log );
+        });
+    });
 });

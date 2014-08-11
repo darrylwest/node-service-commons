@@ -94,32 +94,33 @@ describe('CommonBootStrap', function() {
             options.version().should.equal( 'test-versiona' );
 
         });
+    });
 
-        describe( 'parseConfigFile', function() {
-            it( 'should parse the command line config file', function() {
+    describe( 'parseConfigFile', function() {
+        it( 'should parse the command line config file', function() {
 
-                var args = createCommandLine('testa');
-                var bootStrap = new CommonBootStrap( 'test-versiona' );
+            var args = createCommandLine('testa');
+            var bootStrap = new CommonBootStrap( 'test-versiona' );
 
-                args.push( '--configfile' );
-                args.push( 'vendor-config.json' );
+            args.push( '--configfile' );
+            args.push( 'vendor-config.json' );
 
-                var options = bootStrap.parseCommandLine( args );
+            var options = bootStrap.parseCommandLine( args );
 
-                should.exist( options );
+            should.exist( options );
 
-                // console.log( options.version() );
+            // console.log( options.version() );
 
-                options.should.have.property( 'env' );
-                options.should.have.property( 'logfile' );
-                options.should.have.property( 'configfile' );
-                options.should.have.property( 'version' );
+            options.should.have.property( 'env' );
+            options.should.have.property( 'logfile' );
+            options.should.have.property( 'configfile' );
+            options.should.have.property( 'version' );
 
-                options.env.should.equal( 'testa' );
-                options.configfile.should.equal( 'vendor-config.json' );
-                options.version().should.equal( 'test-versiona' );
+            options.env.should.equal( 'testa' );
+            options.configfile.should.equal( 'vendor-config.json' );
+            options.version().should.equal( 'test-versiona' );
 
-            });
         });
     });
+
 });
