@@ -38,4 +38,27 @@ describe('AbstractDataService', function() {
             });
         });
     });
+
+    describe("parseInt", function() {
+        var service = new AbstractDataService( createOptions() );
+
+        it("should parse integers and return values", function() {
+            var list = [ 23, '44', '22', 54443 ];
+
+            list.forEach(function(value) {
+                var n = service.parseInt( value, 1 );
+                n.should.equal( Number( value ));
+            });
+        });
+
+        it("should fail parse of non-numbers and return defaults", function() {
+            var list = [ 'zzz', 'z432L', 'abba' ],
+                dflt = 9999;
+
+            list.forEach(function(value) {
+                var n = service.parseInt( value, dflt );
+                n.should.equal( dflt );
+            });
+        });
+    });
 });
