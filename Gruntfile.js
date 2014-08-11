@@ -55,6 +55,7 @@ module.exports = function(grunt) {
                     reporter: 'spec'
                 },
                 src: [
+                    '<%= dirs.test %>/*.js',
                     '<%= dirs.test %>/*/*.js'
                 ]
             }

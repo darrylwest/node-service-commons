@@ -5,38 +5,39 @@
  */
 module.exports = {
     controllers: {
-        AbstractApplicationFactory: require( './controllers/AbstractApplicationFactory' ),
-        CommonBootStrap: require( './controllers/CommonBootStrap' )
+        AbstractApplicationFactory: require( './lib/controllers/AbstractApplicationFactory' ),
+        CommonBootStrap: require( './lib/controllers/CommonBootStrap' )
     },
     models: {
-        AbstractBaseModel: require( './models/AbstractBaseModel' ),
-        ServiceResponse: require( './models/ServiceResponse' ),
-        ServiceRoute: require( './models/ServiceRoute' ),
-        AbstractField: require( './models/AbstractField' ),
-        TextField: require( './models/TextField' ),
-        BooleanField: require( './models/BooleanField' ),
-        ListField: require( './models/ListField' ),
-        IPField: require( './models/IPField' ),
-        EmailField: require( './models/EmailField' ),
-        NumberField: require( './models/NumberField' ),
-        DateField: require( './models/DateField' )
+        // AbstractBaseModel: require( './models/AbstractBaseModel' ),
+        // AbstractField: require( './models/AbstractField' ),
+        // TextField: require( './models/TextField' ),
+        // BooleanField: require( './models/BooleanField' ),
+        // ListField: require( './models/ListField' ),
+        // IPField: require( './models/IPField' ),
+        // EmailField: require( './models/EmailField' ),
+        // NumberField: require( './models/NumberField' ),
+        // DateField: require( './models/DateField' ),
+        ServiceResponse: require( './lib/models/ServiceResponse' ),
+        ServiceRoute: require( './lib/models/ServiceRoute' )
+
     },
     delegates: {
-        MiddlewareDelegate: require( './delegates/MiddlewareDelegate' ),
-        DataModelCache: require( './delegates/DataModelCache' ),
-        CommonValidator: require( './delegates/CommonValidator' ),
-        AbstractModelDelegate: require('./delegates/AbstractModelDelegate')
+        // AbstractModelDelegate: require('./delegates/AbstractModelDelegate'),
+        // DataModelCache: require( './delegates/DataModelCache' ),
+        CommonValidator: require( './lib/delegates/CommonValidator' ),
+        MiddlewareDelegate: require( './lib/delegates/MiddlewareDelegate' )
     },
     services: {
-        AbstractDataService: require( './services/AbstractDataService' ),
-        AbstractWebService: require( './services/AbstractWebService' ),
-        WebStatusService: require( './services/WebStatusService' ),
-        IndexPageService: require( './services/IndexPageService' )
+        AbstractDataService: require( './lib/services/AbstractDataService' ),
+        AbstractWebService: require( './lib/services/AbstractWebService' ),
+        WebStatusService: require( './lib/services/WebStatusService' ),
+        IndexPageService: require( './lib/services/IndexPageService' )
     },
     mocks: {
-        MockExpress: require('./unit-test/mocks/MockExpress')
+        MockExpress: require('./test/mocks/MockExpress')
     },
     fixtures: {
-        TestDataset: require('./unit-test/fixtures/TestDataset')
+        TestDataset: require('./test/fixtures/TestDataset')
     }
 };
