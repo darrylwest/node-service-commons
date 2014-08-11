@@ -6,6 +6,7 @@
  */
 var should = require('chai').should(),
     dash = require('lodash' ),
+    Logger = require( 'simple-node-logger' ).Logger,
     AbstractApplicationFactory = require( '../../lib/controllers/AbstractApplicationFactory' );
 
 describe('AbstractApplicationFactory', function() {
@@ -18,7 +19,7 @@ describe('AbstractApplicationFactory', function() {
     };
 
     describe('#instance', function() {
-        var factory = new AbstractApplicationFactory( createOptions() ),
+        var factory = new AbstractApplicationFactory(),
             methods = [
                 'createLogger',
                 'createMiddlewareDelegate',
@@ -46,13 +47,22 @@ describe('AbstractApplicationFactory', function() {
     });
 
     describe('createLogger', function() {
-        var opts =  createOptions();
-
-        it('should create a simple console logger', function() {
-            var factory = new AbstractApplicationFactory( opts ),
+        it('should create a simple console logger with specified level', function() {
+            var factory = new AbstractApplicationFactory(),
                 log = factory.createLogger( 'Test', 'debug' );
 
             should.exist( log );
+            log.should.be.instanceof( Logger );
+            log.getLevel().should.equal('debug');
+        });
+
+        it('should create a simple console logger with default level', function() {
+            var factory = new AbstractApplicationFactory(),
+                log = factory.createLogger( 'Test' );
+
+            should.exist( log );
+            log.should.be.instanceof( Logger );
+            log.getLevel().should.equal('info');
         });
     });
 });
