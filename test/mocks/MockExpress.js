@@ -23,6 +23,14 @@ var MockExpress = function() {
         mock.routes.push( { method:'post', path:path, fn:fn });
     };
 
+    this.put = function(path, fn) {
+        mock.routes.push( { method:'put', path:path, fn:fn });
+    };
+
+    this.del = function(path, fn) {
+        mock.routes.push({ method:'del', path:path, fn:fn });
+    };
+
     this.enable = function() {};
 
     this.use = function(obj) {
