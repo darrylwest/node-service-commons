@@ -21,7 +21,8 @@
     "lodash": "~2.4.1",
     "moment": "^2.8.1",
     "node-uuid": "~1.4.1",
-    "simple-node-logger": "^0.91.91"
+    "simple-node-logger": "^0.91.91",
+    "validator": "^3.17.0"
   },
   "devDependencies": {
     "casual": "^1.4.5",
