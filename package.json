@@ -1,5 +1,5 @@
 {
-  "name": "web-app-runner",
+  "name": "nod-service-commons",
   "version": "0.90.10",
   "description": "Common REST services used for web applications.",
   "main": "./index.js",
