@@ -10,7 +10,9 @@ var should = require('chai').should(),
     Logger = require( 'simple-node-logger' ).Logger,
     AbstractApplicationFactory = require( '../../lib/controllers/AbstractApplicationFactory' ),
     IndexPageService = require('../../lib/services/IndexPageService' ),
-    WebStatusService = require('../../lib/services/WebStatusService' );
+    WebStatusService = require('../../lib/services/WebStatusService' ),
+    CommonValidator = require('../../lib/delegates/CommonValidator' ),
+    MiddlewareDelegate = require('../../lib/delegates/MiddlewareDelegate');
 
 describe('AbstractApplicationFactory', function() {
     'use strict';
@@ -29,7 +31,7 @@ describe('AbstractApplicationFactory', function() {
             methods = [
                 'createLogger',
                 'createMiddlewareDelegate',
-                'createValidator',
+                'createCommonValidator',
                 'addService',
                 'findService',
                 'getServices',
@@ -90,6 +92,26 @@ describe('AbstractApplicationFactory', function() {
 
             should.exist( service );
             service.should.be.instanceof( WebStatusService );
+        });
+    });
+
+    describe('createCommonValidator', function() {
+        it('should create an instance of common validator', function() {
+            var factory = new AbstractApplicationFactory( createOptions() ),
+                delegate = factory.createCommonValidator();
+
+            should.exist( delegate );
+            delegate.should.be.instanceof( CommonValidator );
+        });
+    });
+
+    describe('createMiddlewareDelegate', function() {
+        it('should create an instance of middleware delegate', function() {
+            var factory = new AbstractApplicationFactory( createOptions() ),
+                delegate = factory.createMiddlewareDelegate();
+
+            should.exist( delegate );
+            delegate.should.be.instanceof( MiddlewareDelegate );
         });
     });
 });
