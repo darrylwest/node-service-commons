@@ -6,14 +6,20 @@
  */
 var should = require('chai').should(),
     dash = require('lodash' ),
+    MockLogger = require('simple-node-logger' ).mocks.MockLogger,
     Logger = require( 'simple-node-logger' ).Logger,
-    AbstractApplicationFactory = require( '../../lib/controllers/AbstractApplicationFactory' );
+    AbstractApplicationFactory = require( '../../lib/controllers/AbstractApplicationFactory' ),
+    IndexPageService = require('../../lib/services/IndexPageService' ),
+    WebStatusService = require('../../lib/services/WebStatusService' );
 
 describe('AbstractApplicationFactory', function() {
     'use strict';
 
     var createOptions = function() {
         var opts = {};
+
+        opts.logManager = MockLogger;
+        opts.log = MockLogger.createLogger('AbstractApplicationFactory');
 
         return opts;
     };
@@ -27,6 +33,7 @@ describe('AbstractApplicationFactory', function() {
                 'addService',
                 'findService',
                 'getServices',
+                'getConfiguration',
                 'createIndexPageService',
                 'createWebStatusService',
                 'assignRoutes',
@@ -63,6 +70,26 @@ describe('AbstractApplicationFactory', function() {
             should.exist( log );
             log.should.be.instanceof( Logger );
             log.getLevel().should.equal('info');
+        });
+    });
+
+    describe('createIndexPageService', function() {
+        it('should create the index page service', function() {
+            var factory = new AbstractApplicationFactory( createOptions() ),
+                service = factory.createIndexPageService();
+
+            should.exist( service );
+            service.should.be.instanceof( IndexPageService );
+        });
+    });
+
+    describe('createWebStatusService', function() {
+        it('should create a web status service', function() {
+            var factory = new AbstractApplicationFactory( createOptions() ),
+                service = factory.createWebStatusService();
+
+            should.exist( service );
+            service.should.be.instanceof( WebStatusService );
         });
     });
 });
