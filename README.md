@@ -15,7 +15,7 @@ A collection of startup and control objects.  Most classes are designed to be ex
 This object is used to parse command line inputs to set environment, logfile, configuration, etc.  Its primary method, parseCommandLine() is used to parse an array of strings, typically process.argv and extract the environment name (development, staging, test, production, etc), the config and log files.  For example:
 
 ~~~
-	var Bootstrap = require('node-commons').controllers.CommonBootstrap;
+	var Bootstrap = require('node-service-commons').controllers.CommonBootstrap;
     
     // instantiate with the application version
 	var bootStrap = new BootStrap( Config.VERSION );
@@ -85,4 +85,4 @@ The IndexPageService presents a very simple HTML page displaying the application
 WebStatusService is used to report the web container's current status.  Values include up-time, available memory, the environment name, version, etc.
 
 - - -
-<p><small><em>Copyright © 2014, roundpeg | Version 0.90.14</em></small></p>
+<p><small><em>Copyright © 2014, roundpeg | Version 0.90.15</em></small></p>
