@@ -29,7 +29,8 @@ describe('CommonValidator', function() {
                 'isBoolean',
                 'isEmail',
                 'isIP',
-                'isNumberBetween'
+                'isNumberBetween',
+                'isURL'
             ];
 
         it('should create instance of MiddlewareDelegate', function() {
@@ -210,6 +211,20 @@ describe('CommonValidator', function() {
                 var errors = validator.isDate( date );
 
                 errors.length.should.equal( 1 );
+            });
+        });
+    });
+
+    describe('isURL', function() {
+        var validator = new CommonValidator( createOptions() );
+
+        it('should validate a URL', function() {
+            var list = [ 'http://raincitysoftware.com' ];
+
+            list.forEach(function(url) {
+                var errors = validator.isURL( url );
+
+                errors.length.should.equal( 0 );
             });
         });
     });
