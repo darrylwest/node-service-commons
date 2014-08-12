@@ -1,6 +1,6 @@
 {
   "name": "node-service-commons",
-  "version": "0.90.11",
+  "version": "0.90.12",
   "description": "Common REST services used for web applications.",
   "main": "./index.js",
   "repository": {
@@ -22,12 +22,12 @@
     "moment": "^2.8.1",
     "node-uuid": "~1.4.1",
     "simple-node-logger": "^0.91.91",
-    "validator": "^3.17.0"
+    "validator": "^3.17.0",
+    "express-mocks-http": "0.0.11"
   },
   "devDependencies": {
     "casual": "^1.4.5",
     "chai": "~1.8.1",
-    "express-mocks-http": "0.0.11",
     "grunt": "~0.4.2",
     "grunt-concurrent": "~0.3.0",
     "grunt-contrib-clean": "~0.5.0",
