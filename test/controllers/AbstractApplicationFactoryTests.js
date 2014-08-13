@@ -140,6 +140,13 @@ describe('AbstractApplicationFactory', function() {
     });
 
     describe('initMiddleware', function() {
-        it('should create middleware and use in app');
+        it('should create middleware and use in app', function() {
+            var factory = new AbstractApplicationFactory( createOptions() ),
+                app = new MockExpress();
+
+            factory.initMiddleware( app );
+
+            app.uses.length.should.equal( 3 );
+        });
     });
 });
