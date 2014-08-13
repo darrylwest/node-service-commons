@@ -86,7 +86,9 @@ WebStatusService is used to report the web container's current status.  Values i
 
 ## Common Web Service Architecture
 
-![](./docs/web-service-architecture.png)
+![web service architecture](http://blog.raincitysoftware.com/images/web-service-architecture.png)
+
+_find more info [here](http://blog.raincitysoftware.com/A-Common-Service-Library-for-Node/)..._
 
 - - -
-<p><small><em>Copyright © 2014, roundpeg | Version 0.90.21</em></small></p>
+<p><small><em>Copyright © 2014, roundpeg | Version 0.90.22</em></small></p>
