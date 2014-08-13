@@ -39,7 +39,10 @@ describe('AbstractApplicationFactory', function() {
                 'createIndexPageService',
                 'createWebStatusService',
                 'assignRoutes',
-                'createRoutePath'
+                'createRoutePath',
+                'createWebServices',
+                'initAppDefaults',
+                'initMiddleware'
             ];
 
         it('should create instance of AbstractApplicationFactory', function() {
@@ -113,5 +116,9 @@ describe('AbstractApplicationFactory', function() {
             should.exist( delegate );
             delegate.should.be.instanceof( MiddlewareDelegate );
         });
+    });
+
+    describe('createWebServices', function() {
+        it('should create web services in list');
     });
 });
