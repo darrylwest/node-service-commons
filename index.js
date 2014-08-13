@@ -6,6 +6,7 @@
 module.exports = {
     controllers: {
         AbstractApplicationFactory: require( './lib/controllers/AbstractApplicationFactory' ),
+        AbstractServiceFactory: require( './lib/controllers/AbstractServiceFactory' ),
         CommonBootStrap: require( './lib/controllers/CommonBootStrap' )
     },
     models: {

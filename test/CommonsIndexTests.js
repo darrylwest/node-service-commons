@@ -15,8 +15,50 @@ describe('CommonsIndex', function() {
             commons.controllers.AbstractApplicationFactory.should.be.a('function');
         });
 
+        it('should contain ApplicationServiceFactory', function() {
+            commons.controllers.AbstractServiceFactory.should.be.a('function');
+        });
+
         it('should contain CommonBootStrap', function() {
             commons.controllers.CommonBootStrap.should.be.a('function');
+        });
+    });
+
+    describe('#delegates', function() {
+        it('should contain CommonValidator', function() {
+            commons.delegates.CommonValidator.should.be.a('function');
+        });
+
+        it('should contain MiddlewareDelegate', function() {
+            commons.delegates.MiddlewareDelegate.should.be.a('function');
+        });
+    });
+
+    describe('#models', function() {
+        it('should contain ServiceResponse', function() {
+            commons.models.ServiceResponse.should.be.a('function');
+        });
+
+        it('should contain ServiceRoute', function() {
+            commons.models.ServiceRoute.should.be.a('function');
+        });
+    });
+
+    describe('#services', function() {
+        it('should contain AbstractDataService', function() {
+            commons.services.AbstractDataService.should.be.a('function');
+        });
+
+        it('should contain AbstractWebService', function() {
+            commons.services.AbstractWebService.should.be.a('function');
+        });
+
+        it('should contain IndexPageService', function() {
+            commons.services.IndexPageService.should.be.a('function');
+        });
+
+        it('should contain WebStatusService', function() {
+            commons.services.WebStatusService.should.be.a('function');
         });
     });
 });
