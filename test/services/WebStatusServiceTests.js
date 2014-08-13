@@ -21,6 +21,7 @@ describe('WebStatusService', function() {
         var opts = {};
 
         opts.log = MockLogger.createLogger('WebStatusService');
+        opts.dataService = {};
 
         return opts;
     };
@@ -32,6 +33,9 @@ describe('WebStatusService', function() {
                 'createWebStatus',
                 'formatElapsedTime',
                 // inherited
+                'query',
+                'save',
+                'find',
                 'createSuccessResponse',
                 'createFailedResponse',
                 'createModelPayload',

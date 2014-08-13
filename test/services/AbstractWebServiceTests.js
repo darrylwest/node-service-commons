@@ -23,6 +23,7 @@ describe('AbstractWebService', function() {
 
         opts.log = MockLogger.createLogger('AbstractWebService');
         opts.algorithm = 'sha256';
+        opts.dataService = {};
 
         return opts;
     };
@@ -30,6 +31,9 @@ describe('AbstractWebService', function() {
     describe('#instance', function() {
         var service = new AbstractWebService( createOptions() ),
             methods = [
+                'query',
+                'save',
+                'find',
                 'createSuccessResponse',
                 'createFailedResponse',
                 'createModelPayload',
