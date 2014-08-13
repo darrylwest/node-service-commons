@@ -119,6 +119,10 @@ describe('AbstractApplicationFactory', function() {
     });
 
     describe('createWebServices', function() {
-        it('should create web services in list');
+        it('should create web services in list', function() {
+            var factory = new AbstractApplicationFactory( createOptions() );
+
+            factory.createWebServices( null, [ 'IndexPageService', 'WebStatusService' ]);
+        });
     });
 });
