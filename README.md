@@ -89,4 +89,4 @@ WebStatusService is used to report the web container's current status.  Values i
 ![](./docs/web-service-architecture.png)
 
 - - -
-<p><small><em>Copyright © 2014, roundpeg | Version 0.90.19</em></small></p>
+<p><small><em>Copyright © 2014, roundpeg | Version 0.90.20</em></small></p>
