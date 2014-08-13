@@ -23,6 +23,9 @@ describe('AbstractDataService', function() {
     describe('#instance', function() {
         var service = new AbstractDataService( createOptions() ),
             methods = [
+                'query',
+                'save',
+                'find',
                 'parseInt'
             ];
 
