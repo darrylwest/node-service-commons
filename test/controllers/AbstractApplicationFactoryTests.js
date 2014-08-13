@@ -1,5 +1,5 @@
 /**
- *
+ * @class AbstractApplicationFactoryTests
  *
  * @author: darryl.west@roundpeg.com
  * @created: 8/10/14 4:13 PM
@@ -13,7 +13,8 @@ var should = require('chai').should(),
     IndexPageService = require('../../lib/services/IndexPageService' ),
     WebStatusService = require('../../lib/services/WebStatusService' ),
     CommonValidator = require('../../lib/delegates/CommonValidator' ),
-    MiddlewareDelegate = require('../../lib/delegates/MiddlewareDelegate');
+    MiddlewareDelegate = require('../../lib/delegates/MiddlewareDelegate' ),
+    AbstractServiceFactory = require('../../lib/controllers/AbstractServiceFactory');
 
 describe('AbstractApplicationFactory', function() {
     'use strict';
@@ -37,8 +38,6 @@ describe('AbstractApplicationFactory', function() {
                 'findService',
                 'getServices',
                 'getConfiguration',
-                'createIndexPageService',
-                'createWebStatusService',
                 'assignRoutes',
                 'createRoutePath',
                 'createWebServices',
@@ -79,26 +78,6 @@ describe('AbstractApplicationFactory', function() {
         });
     });
 
-    describe('createIndexPageService', function() {
-        it('should create the index page service', function() {
-            var factory = new AbstractApplicationFactory( createOptions() ),
-                service = factory.createIndexPageService();
-
-            should.exist( service );
-            service.should.be.instanceof( IndexPageService );
-        });
-    });
-
-    describe('createWebStatusService', function() {
-        it('should create a web status service', function() {
-            var factory = new AbstractApplicationFactory( createOptions() ),
-                service = factory.createWebStatusService();
-
-            should.exist( service );
-            service.should.be.instanceof( WebStatusService );
-        });
-    });
-
     describe('createCommonValidator', function() {
         it('should create an instance of common validator', function() {
             var factory = new AbstractApplicationFactory( createOptions() ),
@@ -121,9 +100,16 @@ describe('AbstractApplicationFactory', function() {
 
     describe('createWebServices', function() {
         it('should create web services in list', function() {
-            var factory = new AbstractApplicationFactory( createOptions() );
+            var factory = new AbstractApplicationFactory( createOptions() ),
+                opts = {},
+                serviceFactory;
 
-            factory.createWebServices( null, [ 'IndexPageService', 'WebStatusService' ]);
+            opts.log = MockLogger.createLogger('ServiceFactory');
+            opts.createLogger = MockLogger.createLogger;
+
+            serviceFactory = new AbstractServiceFactory( opts );
+
+            factory.createWebServices( serviceFactory, [ 'IndexPageService', 'WebStatusService' ]);
         });
     });
 
