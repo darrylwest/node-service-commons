@@ -14,6 +14,8 @@ var MockExpress = function() {
     this.port = -1;
     this.routes = [];
     this.uses = [];
+    this.enables = [];
+    this.disables = [];
 
     this.get = function(path, fn) {
         mock.routes.push( { method:'get', path:path, fn:fn });
@@ -31,7 +33,13 @@ var MockExpress = function() {
         mock.routes.push({ method:'del', path:path, fn:fn });
     };
 
-    this.enable = function() {};
+    this.enable = function(value) {
+        mock.enables.push( value );
+    };
+
+    this.disable = function(value) {
+        mock.disables.push( value );
+    };
 
     this.use = function(obj) {
         mock.uses.push( obj );

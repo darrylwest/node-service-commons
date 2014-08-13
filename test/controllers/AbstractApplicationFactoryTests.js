@@ -8,6 +8,7 @@ var should = require('chai').should(),
     dash = require('lodash' ),
     MockLogger = require('simple-node-logger' ).mocks.MockLogger,
     Logger = require( 'simple-node-logger' ).Logger,
+    MockExpress = require( '../mocks/MockExpress' ),
     AbstractApplicationFactory = require( '../../lib/controllers/AbstractApplicationFactory' ),
     IndexPageService = require('../../lib/services/IndexPageService' ),
     WebStatusService = require('../../lib/services/WebStatusService' ),
@@ -124,5 +125,21 @@ describe('AbstractApplicationFactory', function() {
 
             factory.createWebServices( null, [ 'IndexPageService', 'WebStatusService' ]);
         });
+    });
+
+    describe('initAppDefaults', function() {
+        it('should enable and disable app settings', function() {
+            var factory = new AbstractApplicationFactory( createOptions() ),
+                app = new MockExpress();
+
+            factory.initAppDefaults( app );
+
+            app.enables.length.should.equal( 1 );
+            app.disables.length.should.equal( 1 );
+        });
+    });
+
+    describe('initMiddleware', function() {
+        it('should create middleware and use in app');
     });
 });
