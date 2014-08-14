@@ -63,7 +63,7 @@ module.exports = function(grunt) {
         jsdoc: {
             dist:{
                 src:[
-                    '<%= dirs.lib %>/*.js'
+                    '<%= dirs.lib %>/*/*.js'
                 ],
                 options:{
                     destination:'jsdoc'
@@ -85,6 +85,7 @@ module.exports = function(grunt) {
     grunt.registerTask('default', [
         'jshint',
         'mochaTest',
+        'validate-package',
         'jsdoc'
     ]);
 };
