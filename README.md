@@ -2,6 +2,8 @@
 - - -
 Common REST services for node / web applications
 
+[![NPM version](https://badge.fury.io/js/node-service-commons.svg)](http://badge.fury.io/js/node-service-commons)
+
 ## Introduction
 
 The Node Service Commons is a set of components that support REST / web service containers.  
@@ -91,4 +93,4 @@ WebStatusService is used to report the web container's current status.  Values i
 _find more info [here](http://blog.raincitysoftware.com/A-Common-Service-Library-for-Node/)..._
 
 - - -
-<p><small><em>Copyright © 2014, roundpeg | Version 0.90.26</em></small></p>
+<p><small><em>Copyright © 2014, roundpeg | Version 0.90.27</em></small></p>
