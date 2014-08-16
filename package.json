@@ -1,11 +1,14 @@
 {
   "name": "node-service-commons",
-  "version": "0.90.27",
+  "version": "0.90.28",
   "description": "Common REST services used for web applications.",
   "main": "./index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/darrylwest/node-service-commons.git"
+  },
+  "scripts":{
+    "test": "grunt test"
   },
   "keywords": [
     "rest",
