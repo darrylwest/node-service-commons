@@ -3,6 +3,7 @@
 Common REST services for node / web applications
 
 [![NPM version](https://badge.fury.io/js/node-service-commons.svg)](http://badge.fury.io/js/node-service-commons)
+[![Build Status](https://travis-ci.org/darrylwest/node-service-commons.svg?branch=master)](https://travis-ci.org/darrylwest/node-service-commons)
 
 ## Introduction
 
