@@ -1,6 +1,6 @@
 {
   "name": "node-service-commons",
-  "version": "0.90.29",
+  "version": "0.90.30",
   "description": "Common REST services used for web applications.",
   "main": "./index.js",
   "repository": {
@@ -24,7 +24,7 @@
     "lodash": "~2.4.1",
     "moment": "^2.8.1",
     "node-uuid": "~1.4.1",
-    "simple-node-logger": "^0.91.91",
+    "simple-node-logger": "^0.91.98",
     "validator": "^3.17.0",
     "express-mocks-http": "0.0.11"
   },
