@@ -10,7 +10,7 @@ module.exports = {
         CommonBootStrap: require( './lib/controllers/CommonBootStrap' )
     },
     models: {
-        // AbstractBaseModel: require( './models/AbstractBaseModel' ),
+        AbstractBaseModel: require( './lib/models/AbstractBaseModel' ),
         // AbstractField: require( './models/AbstractField' ),
         // TextField: require( './models/TextField' ),
         // BooleanField: require( './models/BooleanField' ),
@@ -22,6 +22,9 @@ module.exports = {
         ServiceResponse: require( './lib/models/ServiceResponse' ),
         ServiceRoute: require( './lib/models/ServiceRoute' )
 
+    },
+    dao: {
+        AbstractBaseDao: require( './lib/dao/AbstractBaseDao' ),
     },
     delegates: {
         // AbstractModelDelegate: require('./delegates/AbstractModelDelegate'),
