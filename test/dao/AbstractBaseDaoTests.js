@@ -34,6 +34,8 @@ describe('AbstractBaseDao', function() {
         it('should create an instance of AbstractBaseDao', function() {
             should.exist( dao );
             dao.should.be.instanceof( AbstractBaseDao );
+
+            AbstractBaseDao.extend.should.be.a( 'function' );
         });
 
         it('should have all known methods by size and type', function() {
@@ -41,6 +43,19 @@ describe('AbstractBaseDao', function() {
             methods.forEach(function(method) {
                 dao[ method ].should.be.a( 'function' );
             });
+        });
+    });
+
+    describe('extends', function() {
+        var MockDao = function(options) {
+            AbstractBaseDao.extend( this, options );
+        };
+
+        it('should extend an object to inherit all public methods', function() {
+            var dao = new MockDao( createOptions() );
+
+            should.exist( dao );
+            dash.methods( dao ).length.should.equal( 5 );
         });
     });
 

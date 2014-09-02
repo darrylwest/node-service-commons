@@ -72,7 +72,7 @@ describe('AbstractBaseModel', function() {
         });
 
         describe("extends", function() {
-            it('should extend and object', function() {
+            it('should extend an object to inherit params', function() {
                 var User = function(params) {
                     AbstractBaseModel.extend( this, params );
                     this.username = params.username;

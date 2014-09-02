@@ -34,7 +34,17 @@ describe('CommonsIndex', function() {
         });
     });
 
+    describe('#dao', function() {
+        it ('should contain AbstractBaseDao', function() {
+            commons.dao.AbstractBaseDao.should.be.a('function');
+        });
+    });
+
     describe('#models', function() {
+        it ('should contain AbstractBaseModel', function() {
+            commons.models.AbstractBaseModel.should.be.a('function');
+        });
+
         it('should contain ServiceResponse', function() {
             commons.models.ServiceResponse.should.be.a('function');
         });
