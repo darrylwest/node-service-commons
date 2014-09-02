@@ -1,13 +1,12 @@
 # Node Service Commons
 - - -
-Common REST services for node / web applications
+An MVC platform of common REST services for node / web applications implemented for classical instantiation and inheritance.
 
-[![NPM version](https://badge.fury.io/js/node-service-commons.svg)](http://badge.fury.io/js/node-service-commons)
-[![Build Status](https://travis-ci.org/darrylwest/node-service-commons.svg?branch=master)](https://travis-ci.org/darrylwest/node-service-commons)
+[![NPM version](https://badge.fury.io/js/node-service-commons.svg)](http://badge.fury.io/js/node-service-commons) [![Build Status](https://travis-ci.org/darrylwest/node-service-commons.svg?branch=master)](https://travis-ci.org/darrylwest/node-service-commons) [![Dependency Status](https://david-dm.org/darrylwest/node-service-commons.svg)](https://david-dm.org/darrylwest/node-service-commons)
 
 ## Introduction
 
-The Node Service Commons is a set of components that support REST / web service containers.  
+The Node Service Commons is a set of components that support REST / web service containers.  The MVC implementation includes factories, data access base classes, delegates, web and data service classes.  Implementation uses classical construction (but not ECMA6 classes yet).
 
 ## Controllers Package
 
@@ -19,13 +18,13 @@ This object is used to parse command line inputs to set environment, logfile, co
 
 ~~~
 	var Bootstrap = require('node-service-commons').controllers.CommonBootstrap;
-    
+
     // instantiate with the application version
 	var bootStrap = new BootStrap( Config.VERSION );
-    
+
     // parse the options and set defaults
     var options = bootStrap.parseCommandLine( process.argv );
-    
+
     assert options.env === 'development';
 ~~~
 
@@ -69,6 +68,10 @@ A simple datamodel that contains route info including method, url, and service f
 
 The ServiceResponse is a wrapper for all JSON returns.  There are two possible status conditions: ok or failed.  Normal returns include a status of ok, a timestamp, version and the model or list payload.  Error or failed returns include a status of failed, a timestamp, version and the reason for the failure.
 
+## Data Access Objects
+
+### Abstract Non-SQL DAO
+
 ## Services
 
 ### AbstractWebService
@@ -94,4 +97,4 @@ WebStatusService is used to report the web container's current status.  Values i
 _find more info [here](http://blog.raincitysoftware.com/A-Common-Service-Library-for-Node/)..._
 
 - - -
-<p><small><em>Copyright © 2014, roundpeg | Version 0.90.30</em></small></p>
+<p><small><em>Copyright © 2014, roundpeg | Version 0.90.31</em></small></p>
