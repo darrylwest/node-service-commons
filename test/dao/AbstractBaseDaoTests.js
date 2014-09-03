@@ -92,7 +92,7 @@ describe('AbstractBaseDao', function() {
     describe('findById', function() {
         var dao = new AbstractBaseDao( createOptions()),
             client = new MockClient(),
-            list = new Dataset().createModelList();
+            list = new Dataset().createModelList(5);
 
         beforeEach(function(done) {
             var mlist = [];
@@ -183,6 +183,48 @@ describe('AbstractBaseDao', function() {
 
             dao.insert( client, ref, callback );
         });
+    });
 
+    describe('update', function() {
+        var dao = new AbstractBaseDao( createOptions()),
+            client = new MockClient(),
+            list = new Dataset().createModelList(5);
+
+        beforeEach(function(done) {
+            var mlist = [];
+
+            list.forEach(function(model) {
+                var key = dao.createDomainKey( model.id );
+
+                mlist.push( key );
+                model.name = 'flarb';
+
+                mlist.push( JSON.stringify( model ));
+            });
+
+            client.mset( mlist, done );
+        });
+
+        it('should update an existing model', function(done) {
+            var ref = list[0],
+                callback;
+
+            ref.name = 'newberg';
+
+            callback = function(err, model) {
+                should.not.exist( err );
+                should.exist( model );
+
+                model.id.should.equal( ref.id );
+                model.dateCreated.getTime().should.equal( ref.dateCreated.getTime() );
+                model.lastUpdated.getTime().should.not.equal( ref.lastUpdated.getTime() );
+                model.version.should.equal( ref.version + 1 );
+                model.name.should.equal( ref.name );
+
+                done();
+            };
+
+            dao.update( client, ref, callback );
+        });
     });
 });
