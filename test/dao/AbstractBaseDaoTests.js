@@ -7,7 +7,8 @@
 var should = require('chai').should(),
     dash = require('lodash' ),
     MockLogger = require('simple-node-logger' ).mocks.MockLogger,
-    RedisMock = require('redis-mock'),
+    AbstractBaseModel = require('../../lib/models/AbstractBaseModel'),
+    Dataset = require('../fixtures/TestDataset'),
     AbstractBaseDao = require('../../lib/dao/AbstractBaseDao');
 
 describe('AbstractBaseDao', function() {
@@ -26,6 +27,31 @@ describe('AbstractBaseDao', function() {
         AbstractBaseDao.extend( this, options );
     };
 
+    var MockClient = function() {
+        var mock = this,
+            modelList;
+
+        this.init = function(dataset) {
+            modelList = dataset.createModelList( 10, function() {
+                return new AbstractBaseModel( dataset.createBaseModelParams() );
+            });
+
+            return modelList;
+        };
+
+        this.get = function(key, callback) {
+            var id = key.split(':')[1],
+                model = dash.find( modelList, { id:id }),
+                json;
+
+            if (model) {
+                json = JSON.stringify( model );
+            }
+
+            callback(null, json);
+        };
+    };
+
     describe('#instance', function() {
         var dao = new AbstractBaseDao( createOptions() ),
             methods = [
@@ -34,7 +60,8 @@ describe('AbstractBaseDao', function() {
                 'query',
                 'findById',
                 'insert',
-                'update'
+                'update',
+                'parseModel'
             ];
 
         it('should create an instance of AbstractBaseDao', function() {
@@ -88,9 +115,41 @@ describe('AbstractBaseDao', function() {
 
     describe('findById', function() {
         var dao = new AbstractBaseDao( createOptions()),
-            client = RedisMock.createClient();
-        
-        it('should find and return a known model by id');
-        it('should not find an unknown id');
+            client = new MockClient(),
+            list = client.init( new Dataset() );
+
+        it('should find and return a known model by id', function(done) {
+            var ref = list[0],
+                callback;
+
+            callback = function(err, model) {
+                should.not.exist( err );
+                should.exist( model );
+
+                model.dateCreated.getTime().should.equal( ref.dateCreated.getTime() );
+                model.lastUpdated.getTime().should.equal( ref.lastUpdated.getTime() );
+                model.version.should.equal( ref.version );
+
+                done();
+            };
+
+            // console.log( model );
+            dao.findById( client, ref.id, callback );
+        });
+
+        it('should not find an unknown id', function(done) {
+            var id = 'bad-id',
+                callback;
+
+            callback = function(err, model) {
+                should.not.exist( err );
+                should.not.exist( model );
+
+                done();
+            };
+
+            // console.log( model );
+            dao.findById( client, id, callback );
+        });
     });
 });
