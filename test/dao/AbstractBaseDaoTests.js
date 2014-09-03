@@ -77,7 +77,13 @@ describe('AbstractBaseDao', function() {
     describe('createModelId', function() {
         var dao = new AbstractBaseDao( createOptions() );
 
-        it('should create a standard model id guid');
+        it('should create a standard model id guid', function() {
+            var id = dao.createModelId();
+
+            console.log( id );
+            should.exist( id );
+            dash.size( id ).should.equal( 32 );
+        });
     });
 
     describe('findById', function() {
