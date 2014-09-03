@@ -1,4 +1,5 @@
 /**
+ * @class MockRedisClient
  *
  * @author: darryl.west@roundpeg.com
  * @created: 9/3/14
@@ -15,9 +16,8 @@ var MockRedisClient = function() {
     this.mset = function(list, callback) {
         list = dash.clone( list );
 
-        var cb = function(err) {
+        var cb = function(err, model) {
             if (err) throw err;
-
 
             var key = list.shift();
             var value = list.shift();

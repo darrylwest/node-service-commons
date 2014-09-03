@@ -89,6 +89,40 @@ describe('AbstractBaseDao', function() {
         });
     });
 
+    describe('query', function() {
+        var dao = new AbstractBaseDao( createOptions()),
+            client = new MockClient(),
+            list = new Dataset().createModelList(25);
+
+        beforeEach(function(done) {
+            var mlist = [];
+
+            list.forEach(function(model) {
+                var key = dao.createDomainKey( model.id );
+
+                mlist.push( key );
+                model.name = 'flarb';
+
+                mlist.push( JSON.stringify( model ));
+            });
+
+            client.mset( mlist, done );
+        });
+
+        it('should return a list of model objects', function(done) {
+            var callback = function(err, models) {
+                should.not.exist( err );
+                should.exist( models );
+
+                list.length.should.equal( list.length );
+
+                done();
+            };
+
+            dao.query( client, callback);
+        });
+    });
+
     describe('findById', function() {
         var dao = new AbstractBaseDao( createOptions()),
             client = new MockClient(),
