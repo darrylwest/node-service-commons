@@ -3,36 +3,42 @@
  * @author: darryl.west@roundpeg.com
  * @created: 9/3/14
  */
-var dash = require('lodash');
+var dash = require('lodash'),
+    RedisMock = require('redis-mock');
 
 var MockRedisClient = function() {
     'use strict';
 
     var mock = this,
-        modelList;
+        client = RedisMock.createClient();
 
-    this.initModelList = function(list, callback) {
-        modelList = list;
+    this.mset = function(list, callback) {
+        list = dash.clone( list );
 
-        callback(null,  modelList);
+        var cb = function(err) {
+            if (err) throw err;
+
+
+            var key = list.shift();
+            var value = list.shift();
+
+            if (!key || !value) {
+                return callback(null, 'ok');
+            } else {
+                // console.log(key, '=', value);
+                client.set( key, value, cb );
+            }
+        };
+
+        cb();
     };
 
-    this.get = function(key, callback) {
-        var id = key.split(':')[1],
-            model = dash.find( modelList, { id:id }),
-            json;
+    // re-assign all the methods
+    dash.methods( client).forEach(function(method) {
+        mock[ method ] = client[ method ];
+    });
 
-        if (model) {
-            json = JSON.stringify( model );
-        }
 
-        callback(null, json);
-    };
-
-    this.set = function(key, value, callback) {
-        // TODO back with redis-mock
-        callback(null, 'ok');
-    };
 };
 
 module.exports = MockRedisClient;

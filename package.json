@@ -1,6 +1,6 @@
 {
   "name": "node-service-commons",
-  "version": "0.90.39",
+  "version": "0.90.40",
   "description": "An MVC platform of common REST services for node / web applications implemented for classical instantiation and inheritance.",
   "main": "./index.js",
   "repository": {
@@ -46,6 +46,7 @@
     "jshint-stylish": "~0.1.3",
     "load-grunt-tasks": "~0.1.0",
     "mocha": "~1.16.2",
+    "redis-mock": "^0.3.0",
     "time-grunt": "~0.1.1"
   },
   "author": "darryl.west@raincitysoftware.com",

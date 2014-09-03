@@ -95,7 +95,16 @@ describe('AbstractBaseDao', function() {
             list = new Dataset().createModelList();
 
         beforeEach(function(done) {
-            client.initModelList( list, done );
+            var mlist = [];
+
+            list.forEach(function(model) {
+                var key = dao.createDomainKey( model.id );
+
+                mlist.push( key );
+                mlist.push( JSON.stringify( model ));
+            });
+
+            client.mset( mlist, done );
         });
 
         it('should find and return a known model by id', function(done) {
@@ -135,11 +144,10 @@ describe('AbstractBaseDao', function() {
 
     describe('insert', function() {
         var dao = new AbstractBaseDao( createOptions()),
-            client = new MockClient(),
-            list = new Dataset().createModelList(3);
+            client = new MockClient();
 
         it('should insert a new model with base properties', function(done) {
-            var ref = list[0],
+            var ref = new Dataset().createModel(),
                 callback;
 
             callback = function(err, model) {
