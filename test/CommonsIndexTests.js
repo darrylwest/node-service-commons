@@ -54,6 +54,16 @@ describe('CommonsIndex', function() {
         });
     });
 
+    describe('#mocks', function() {
+        it('should contain a MockRedisClient', function() {
+            commons.mocks.MockRedisClient.should.be.a('function');
+        });
+
+        it('should contain a MockExpress', function() {
+            commons.mocks.MockExpress.should.be.a('function');
+        });
+    });
+
     describe('#services', function() {
         it('should contain AbstractDataService', function() {
             commons.services.AbstractDataService.should.be.a('function');
