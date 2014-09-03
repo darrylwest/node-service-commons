@@ -7,6 +7,7 @@
 var should = require('chai').should(),
     dash = require('lodash' ),
     MockLogger = require('simple-node-logger' ).mocks.MockLogger,
+    RedisMock = require('redis-mock'),
     AbstractBaseDao = require('../../lib/dao/AbstractBaseDao');
 
 describe('AbstractBaseDao', function() {
@@ -21,9 +22,14 @@ describe('AbstractBaseDao', function() {
         return opts;
     };
 
+    var MockDao = function(options) {
+        AbstractBaseDao.extend( this, options );
+    };
+
     describe('#instance', function() {
         var dao = new AbstractBaseDao( createOptions() ),
             methods = [
+                'createModelId',
                 'createDomainKey',
                 'query',
                 'findById',
@@ -44,18 +50,12 @@ describe('AbstractBaseDao', function() {
                 dao[ method ].should.be.a( 'function' );
             });
         });
-    });
-
-    describe('extends', function() {
-        var MockDao = function(options) {
-            AbstractBaseDao.extend( this, options );
-        };
 
         it('should extend an object to inherit all public methods', function() {
             var dao = new MockDao( createOptions() );
 
             should.exist( dao );
-            dash.methods( dao ).length.should.equal( 5 );
+            dash.methods( dao ).length.should.equal( methods.length );
         });
     });
 
@@ -72,5 +72,19 @@ describe('AbstractBaseDao', function() {
             // if the key is passed in, its simply returned
             dao.createDomainKey( key ).should.equal( key );
         });
+    });
+
+    describe('createModelId', function() {
+        var dao = new AbstractBaseDao( createOptions() );
+
+        it('should create a standard model id guid');
+    });
+
+    describe('findById', function() {
+        var dao = new AbstractBaseDao( createOptions()),
+            client = RedisMock.createClient();
+        
+        it('should find and return a known model by id');
+        it('should not find an unknown id');
     });
 });
