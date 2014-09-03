@@ -28,6 +28,11 @@ var MockRedisClient = function() {
 
         callback(null, json);
     };
+
+    this.set = function(key, value, callback) {
+        // TODO back with redis-mock
+        callback(null, 'ok');
+    };
 };
 
 module.exports = MockRedisClient;

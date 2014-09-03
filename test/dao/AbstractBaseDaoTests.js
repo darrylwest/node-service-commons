@@ -132,4 +132,49 @@ describe('AbstractBaseDao', function() {
             dao.findById( client, id, callback );
         });
     });
+
+    describe('insert', function() {
+        var dao = new AbstractBaseDao( createOptions()),
+            client = new MockClient(),
+            list = new Dataset().createModelList(3);
+
+        it('should insert a new model with base properties', function(done) {
+            var ref = list[0],
+                callback;
+
+            callback = function(err, model) {
+                should.not.exist( err );
+                should.exist( model );
+
+                model.id.should.equal( ref.id );
+                model.dateCreated.getTime().should.equal( ref.dateCreated.getTime() );
+                // model.lastUpdated.getTime().should.equal( ref.lastUpdated.getTime() );
+                model.version.should.equal( ref.version );
+
+                done();
+            };
+
+            dao.insert( client, ref, callback );
+        });
+
+        it('should insert a new model with base properties', function(done) {
+            var ref = new AbstractBaseModel(),
+                callback;
+
+            callback = function(err, model) {
+                should.not.exist( err );
+                should.exist( model );
+
+                should.exist( model.id );
+                should.exist( model.dateCreated );
+                should.exist( model.lastUpdated );
+                model.version.should.equal( 0 );
+
+                done();
+            };
+
+            dao.insert( client, ref, callback );
+        });
+
+    });
 });

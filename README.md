@@ -70,7 +70,9 @@ The ServiceResponse is a wrapper for all JSON returns.  There are two possible s
 
 ## Data Access Objects
 
-### Abstract Non-SQL DAO
+### Abstract NoSQL DAO
+
+Optimized for redis but can support others.
 
 ## Services
 
@@ -90,6 +92,11 @@ The IndexPageService presents a very simple HTML page displaying the application
 
 WebStatusService is used to report the web container's current status.  Values include up-time, available memory, the environment name, version, etc.
 
+## Mocks
+
+- MockExpress
+- MockRedisClient
+
 ## Common Web Service Architecture
 
 ![web service architecture](http://blog.raincitysoftware.com/images/web-service-architecture.png)
@@ -97,4 +104,4 @@ WebStatusService is used to report the web container's current status.  Values i
 _find more info [here](http://blog.raincitysoftware.com/A-Common-Service-Library-for-Node/)..._
 
 - - -
-<p><small><em>Copyright © 2014, roundpeg | Version 0.90.38</em></small></p>
+<p><small><em>Copyright © 2014, roundpeg | Version 0.90.39</em></small></p>
