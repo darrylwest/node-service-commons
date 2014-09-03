@@ -5,7 +5,8 @@
  * @created: 8/11/14 10:36 AM
  */
 var dash = require("lodash" ),
-    uuid = require('node-uuid' );
+    uuid = require('node-uuid'),
+    AbstractBaseModel = require('../../lib/models/AbstractBaseModel');
 
 var TestDataset = function() {
     "use strict";
@@ -49,6 +50,10 @@ var TestDataset = function() {
         return obj;
     };
 
+    this.createModel = function() {
+        return new AbstractBaseModel( dataset.createBaseModelParams() );
+    };
+
     /**
      * create a list of data models
      *
@@ -57,6 +62,8 @@ var TestDataset = function() {
      */
     this.createModelList = function(count, fn) {
         var n = (typeof count === "number") ? count : 10;
+        if (!fn) fn = dataset.createModel;
+
         var list = [];
 
         for (var i = 0; i < n; i++) {

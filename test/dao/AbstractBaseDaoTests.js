@@ -9,6 +9,7 @@ var should = require('chai').should(),
     MockLogger = require('simple-node-logger' ).mocks.MockLogger,
     AbstractBaseModel = require('../../lib/models/AbstractBaseModel'),
     Dataset = require('../fixtures/TestDataset'),
+    MockClient = require('../mocks/MockRedisClient'),
     AbstractBaseDao = require('../../lib/dao/AbstractBaseDao');
 
 describe('AbstractBaseDao', function() {
@@ -25,31 +26,6 @@ describe('AbstractBaseDao', function() {
 
     var MockDao = function(options) {
         AbstractBaseDao.extend( this, options );
-    };
-
-    var MockClient = function() {
-        var mock = this,
-            modelList;
-
-        this.init = function(dataset) {
-            modelList = dataset.createModelList( 10, function() {
-                return new AbstractBaseModel( dataset.createBaseModelParams() );
-            });
-
-            return modelList;
-        };
-
-        this.get = function(key, callback) {
-            var id = key.split(':')[1],
-                model = dash.find( modelList, { id:id }),
-                json;
-
-            if (model) {
-                json = JSON.stringify( model );
-            }
-
-            callback(null, json);
-        };
     };
 
     describe('#instance', function() {
@@ -116,7 +92,11 @@ describe('AbstractBaseDao', function() {
     describe('findById', function() {
         var dao = new AbstractBaseDao( createOptions()),
             client = new MockClient(),
-            list = client.init( new Dataset() );
+            list = new Dataset().createModelList();
+
+        beforeEach(function(done) {
+            client.initModelList( list, done );
+        });
 
         it('should find and return a known model by id', function(done) {
             var ref = list[0],
