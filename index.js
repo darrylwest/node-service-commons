@@ -40,6 +40,7 @@ module.exports = {
     },
     mocks: {
         MockExpress: require('./test/mocks/MockExpress')
+        MockRedisClient: require('./test/mocks/MockRedisClient')
     },
     fixtures: {
         TestDataset: require('./test/fixtures/TestDataset')
