@@ -4,7 +4,7 @@
  * @created: 9/3/14
  */
 var dash = require('lodash'),
-    RedisMock = require('redis-mock');
+    RedisMock = require('node-redis-mock');
 
 var MockRedisClient = function() {
     'use strict';
