@@ -55,10 +55,6 @@ describe('CommonsIndex', function() {
     });
 
     describe('#mocks', function() {
-        it('should contain a MockRedisClient', function() {
-            commons.mocks.MockRedisClient.should.be.a('function');
-        });
-
         it('should contain a MockExpress', function() {
             commons.mocks.MockExpress.should.be.a('function');
         });

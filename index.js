@@ -39,8 +39,7 @@ module.exports = {
         IndexPageService: require( './lib/services/IndexPageService' )
     },
     mocks: {
-        MockExpress: require('./test/mocks/MockExpress'),
-        MockRedisClient: require('./test/mocks/MockRedisClient')
+        MockExpress: require('./test/mocks/MockExpress')
     },
     fixtures: {
         TestDataset: require('./test/fixtures/TestDataset')

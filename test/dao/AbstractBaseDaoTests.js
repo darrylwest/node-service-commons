@@ -9,7 +9,7 @@ var should = require('chai').should(),
     MockLogger = require('simple-node-logger' ).mocks.MockLogger,
     AbstractBaseModel = require('../../lib/models/AbstractBaseModel'),
     Dataset = require('../fixtures/TestDataset'),
-    MockClient = require('../mocks/MockRedisClient'),
+    MockClient = require('mock-redis-client'),
     AbstractBaseDao = require('../../lib/dao/AbstractBaseDao');
 
 describe('AbstractBaseDao', function() {
