@@ -104,4 +104,4 @@ WebStatusService is used to report the web container's current status.  Values i
 _find more info [here](http://blog.raincitysoftware.com/A-Common-Service-Library-for-Node/)..._
 
 - - -
-<p><small><em>Copyright © 2014, roundpeg | Version 0.90.45</em></small></p>
+<p><small><em>Copyright © 2014, roundpeg | Version 0.90.46</em></small></p>

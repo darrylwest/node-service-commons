@@ -24,7 +24,7 @@ module.exports = {
 
     },
     dao: {
-        AbstractBaseDao: require( './lib/dao/AbstractBaseDao' ),
+        AbstractBaseDao: require( './lib/dao/AbstractBaseDao' )
     },
     delegates: {
         // AbstractModelDelegate: require('./delegates/AbstractModelDelegate'),
