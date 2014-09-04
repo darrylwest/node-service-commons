@@ -3,3 +3,4 @@
 node_modules
 leveldb-test
 jsdoc
+npm-debug.log
