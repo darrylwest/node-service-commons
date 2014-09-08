@@ -1,6 +1,6 @@
 # Node Service Commons
 - - -
-An MVC platform of common REST services for node / web applications implemented for classical instantiation and inheritance.
+An MVC platform of common JSON/REST services for node / web applications implemented for classical instantiation and inheritance.
 
 [![NPM version](https://badge.fury.io/js/node-service-commons.svg)](http://badge.fury.io/js/node-service-commons) [![Build Status](https://travis-ci.org/darrylwest/node-service-commons.svg?branch=master)](https://travis-ci.org/darrylwest/node-service-commons) [![Dependency Status](https://david-dm.org/darrylwest/node-service-commons.svg)](https://david-dm.org/darrylwest/node-service-commons)
 
@@ -104,4 +104,4 @@ WebStatusService is used to report the web container's current status.  Values i
 _find more info [here](http://blog.raincitysoftware.com/A-Common-Service-Library-for-Node/)..._
 
 - - -
-<p><small><em>Copyright © 2014, roundpeg | Version 0.90.49</em></small></p>
+<p><small><em>Copyright © 2014, roundpeg | Version 0.90.50</em></small></p>
