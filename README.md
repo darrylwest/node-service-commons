@@ -72,7 +72,17 @@ The ServiceResponse is a wrapper for all JSON returns.  There are two possible s
 
 ### Abstract NoSQL DAO
 
-Optimized for redis but can support others.
+Optimized for redis but can support others.  The standard implementation includes these methods:
+
+- findById - return the model located by id
+- query - generic query that returns all rows for the given domain
+- insert - insert a model; if id is missing, create one
+- update - update a model
+- createModelId - create a standard uuid-like id
+- createDomainKey - create a key combining the domain name and id
+- parseModel - parse the domain model
+
+All of these methods work out of the box and are easily overridden to provide specific implementations.
 
 ## Services
 
@@ -108,4 +118,4 @@ TODO:
 - example of method overrides
 
 - - -
-<p><small><em>Copyright © 2014, roundpeg | Version 0.90.54</em></small></p>
+<p><small><em>Copyright © 2014, roundpeg | Version 0.90.55</em></small></p>
