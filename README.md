@@ -37,7 +37,7 @@ Typical Use:
 
 ~~~
 	// called by the concrete ApplicationFactory (this) with options/configuration
-    
+
 	AbstractApplicationFactory.extend( this, options );
 ~~~
 
@@ -57,6 +57,8 @@ The middleware delegate provides standard middleware to check API key, enable cr
 ~~~
 	curl -d token=<api-token> http://127.0.0.1:<port>/shutdown
 ~~~
+
+The standard delegate also includes a X-API-Key filter to require all requests to use the key.  This also enforces the same-domain rule which can be difficult in development.  So, there is an options switch that can be set in development to ignore the key requirement.  This needs to be enforced on both server and client.
 
 ## Models
 
@@ -118,4 +120,4 @@ TODO:
 - example of method overrides
 
 - - -
-<p><small><em>Copyright © 2014, roundpeg | Version 0.90.56</em></small></p>
+<p><small><em>Copyright © 2014, roundpeg | Version 0.90.57</em></small></p>
