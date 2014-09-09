@@ -1,6 +1,7 @@
 # Node Service Commons To Do List
 - - -
 
+- implemented small demo client
 - implement field validation 
 - websocket validation message handler
 
