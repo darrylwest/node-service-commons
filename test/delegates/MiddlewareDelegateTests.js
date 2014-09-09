@@ -115,6 +115,29 @@ describe('MiddlewareDelegate', function() {
             delegate = new MiddlewareDelegate( opts );
             delegate.checkAPIKey( request, response, next );
         });
+
+        it('should ignore the API key mismatch on option set', function(done) {
+            var opts = createOptions(),
+                response,
+                request = {
+                    headers:{
+                        'x-api-key':opts.appkey
+                    }
+                },
+                next,
+                delegate;
+
+            response = new Response();
+            next = function() {
+                done();
+            };
+
+            opts.appkeyTimeout = 50;
+            opts.appkey = 'bad-request-key';
+            opts.includeXAPIKey = false;
+            delegate = new MiddlewareDelegate( opts );
+            delegate.checkAPIKey( request, response, next );
+        });
     });
 
     describe( 'allowCrossDomain', function() {
