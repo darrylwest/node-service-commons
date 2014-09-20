@@ -119,7 +119,7 @@ describe('AbstractBaseDao', function() {
                 done();
             };
 
-            dao.query( client, callback);
+            dao.query( client, callback );
         });
     });
 
