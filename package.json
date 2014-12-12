@@ -1,6 +1,6 @@
 {
   "name": "node-service-commons",
-  "version": "0.90.65",
+  "version": "0.90.66",
   "description": "An MVC platform of common REST services for node / web applications implemented for classical instantiation and inheritance.",
   "main": "./index.js",
   "repository": {
@@ -32,7 +32,6 @@
     "validator": "^3.22.1"
   },
   "devDependencies": {
-    "casual": "^1.4.5",
     "chai": "~1.8.1",
     "grunt": "~0.4.2",
     "grunt-concurrent": "~0.3.0",
@@ -48,6 +47,7 @@
     "load-grunt-tasks": "~0.1.0",
     "mocha": "~1.16.2",
     "mock-redis-client": "^0.90.11",
+    "random-fixture-data": "^2.0.12",
     "time-grunt": "~0.1.1"
   },
   "author": "darryl.west@raincitysoftware.com",
