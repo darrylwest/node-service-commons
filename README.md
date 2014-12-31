@@ -107,6 +107,7 @@ WebStatusService is used to report the web container's current status.  Values i
 ## Mocks
 
 - MockExpress
+- MockAgent (super agent)
 - MockRedisClient
 
 ## Common Web Service Architecture
@@ -120,4 +121,4 @@ TODO:
 - example of method overrides
 
 - - -
-<p><small><em>Copyright © 2014, roundpeg | Version 0.90.66</em></small></p>
+<p><small><em>Copyright © 2014, roundpeg | Version 0.90.67</em></small></p>

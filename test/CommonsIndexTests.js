@@ -58,6 +58,9 @@ describe('CommonsIndex', function() {
         it('should contain a MockExpress', function() {
             commons.mocks.MockExpress.should.be.a('function');
         });
+        it('should contain a MockAgent', function() {
+            commons.mocks.MockAgent.should.be.a('function');
+        });
     });
 
     describe('#services', function() {
