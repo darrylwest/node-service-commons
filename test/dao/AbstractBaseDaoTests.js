@@ -83,7 +83,7 @@ describe('AbstractBaseDao', function() {
         it('should create a standard model id guid', function() {
             var id = dao.createModelId();
 
-            console.log( id );
+            // console.log( id );
             should.exist( id );
             dash.size( id ).should.equal( 32 );
         });

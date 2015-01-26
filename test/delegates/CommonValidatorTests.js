@@ -30,7 +30,9 @@ describe('CommonValidator', function() {
                 'isEmail',
                 'isIP',
                 'isNumberBetween',
-                'isURL'
+                'isURL',
+                'isBitSet',
+                'setBitFlag'
             ];
 
         it('should create instance of MiddlewareDelegate', function() {
@@ -226,6 +228,47 @@ describe('CommonValidator', function() {
 
                 errors.length.should.equal( 0 );
             });
+        });
+    });
+
+    describe('isBitSet', function() {
+        var validator = new CommonValidator( createOptions() );
+
+        it('should return true if a bit flag is set', function() {
+            var flags = 10,
+                bitPosition = 2;
+
+            validator.isBitSet( flags, bitPosition ).should.equal( true );
+        });
+
+        it('should return false if a bit flag is clear', function() {
+            var flags = 10,
+                bitPosition = 1;
+
+            validator.isBitSet( flags, bitPosition ).should.equal( false );
+        });
+
+        it('should return true for a group of flags that are set', function() {
+            var flags = 255,
+                bp = 8;
+
+            while (bp > 0) {
+                validator.isBitSet( flags, bp ).should.equal( true );
+
+                bp--;
+            }
+        });
+    });
+
+    describe('setBitFlag', function() {
+        var validator = new CommonValidator( createOptions() );
+
+        it('should set a bit to 1 based on bit position', function() {
+            var flags = 0,
+                bitPosition = 8;
+
+            flags = validator.setBitFlag( flags, bitPosition );
+            flags.should.equal( 128 );
         });
     });
 });

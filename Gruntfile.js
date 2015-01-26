@@ -7,6 +7,8 @@
 module.exports = function(grunt) {
     'use strict';
 
+    var mochaReporter = process.env.reporter || 'nyan';
+
     require('time-grunt')(grunt);
     require('load-grunt-tasks')(grunt);
 
@@ -54,7 +56,7 @@ module.exports = function(grunt) {
         mochaTest: {
             test: {
                 options: {
-                    reporter: 'spec'
+                    reporter: mochaReporter
                 },
                 src: [
                     '<%= dirs.test %>/*.js',
