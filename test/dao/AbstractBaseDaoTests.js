@@ -10,6 +10,7 @@ var should = require('chai').should(),
     AbstractBaseModel = require('../../lib/models/AbstractBaseModel'),
     Dataset = require('../fixtures/TestDataset'),
     MockClient = require('mock-redis-client'),
+    AbstractBaseModel = require('../../lib/models/AbstractBaseModel' ),
     AbstractBaseDao = require('../../lib/dao/AbstractBaseDao');
 
 describe('AbstractBaseDao', function() {
@@ -20,6 +21,10 @@ describe('AbstractBaseDao', function() {
 
         opts.log = MockLogger.createLogger('AbstractBaseDao');
         opts.domain = 'MyDomainName';
+
+        opts.createType = function(model) {
+            return new AbstractBaseModel( model );
+        };
 
         return opts;
     };
@@ -152,6 +157,8 @@ describe('AbstractBaseDao', function() {
                 model.dateCreated.getTime().should.equal( ref.dateCreated.getTime() );
                 model.lastUpdated.getTime().should.equal( ref.lastUpdated.getTime() );
                 model.version.should.equal( ref.version );
+
+                model.should.be.instanceof( AbstractBaseModel );
 
                 done();
             };
