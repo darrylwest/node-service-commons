@@ -25,7 +25,7 @@
     "body-parser": "^1.9.2",
     "commander": "^2.5.0",
     "express-mocks-http": "0.0.11",
-    "lodash": "^3.0.0",
+    "lodash": "^3.5.0",
     "moment": "^2.9.0",
     "node-uuid": "^1.4.1",
     "simple-node-logger": "^0.92.13",
