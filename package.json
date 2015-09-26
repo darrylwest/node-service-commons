@@ -1,6 +1,6 @@
 {
   "name": "node-service-commons",
-  "version": "0.90.83",
+  "version": "0.90.84",
   "description": "An MVC platform of common REST services for node / web applications implemented for classical instantiation and inheritance.",
   "main": "./index.js",
   "repository": {
@@ -30,7 +30,7 @@
     "node-uuid": "^1.4.1",
     "simple-node-logger": "^0.92.18",
     "superagent": "^1.2.0",
-    "validator": "^3.22.1"
+    "validator": "^4.0.6"
   },
   "devDependencies": {
     "chai": "~1.8.1",
