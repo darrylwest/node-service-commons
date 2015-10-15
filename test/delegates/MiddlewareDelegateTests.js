@@ -17,8 +17,46 @@ describe('MiddlewareDelegate', function() {
 
         opts.log = new MockLogger.createLogger('MiddlewareDelegate');
         opts.appkey = 'ae3b1d1c-7a44-45f6-82f5-0a4eb789ae10';
+        opts.acceptedProtocols = [ 'http', 'https' ];
 
         return opts;
+    };
+
+    // mock response
+    var Response = function() {
+        var r = this,
+            status,
+            params = {},
+            values = {};
+
+        this.header = function(key, value) {
+            values[ key ] = value;
+        };
+
+        this.status = function(value) {
+            status = value;
+        };
+        this.getStatus = function() {
+            return status;
+        };
+        this.setHeader = function(key, value) {
+            values[ key ] = value;
+        };
+        this.getValues = function() { return values; };
+        this.set = function(key, value) {
+            params[ key ] = value;
+        };
+        this.getParams = function() {
+            return params;
+        };
+
+        this.set = function() {
+
+        };
+
+        this.send = function() {
+
+        };
     };
 
     describe('#instance', function() {
@@ -26,6 +64,7 @@ describe('MiddlewareDelegate', function() {
             methods = [
                 'checkAPIKey',
                 'allowCrossDomain',
+                'checkProtocol',
                 'shutdown'
             ];
 
@@ -43,34 +82,10 @@ describe('MiddlewareDelegate', function() {
     });
 
     describe('checkAPIKey', function() {
-        var Response = function() {
-            var r = this,
-                httpStatus,
-                values = {};
-
-            this.header = function(key, value) {
-                values[ key ] = value;
-            };
-
-            this.status = function(n) {
-                httpStatus = n;
-            };
-
-            this.setHeader = this.header;
-            this.getValues = function() { return values; };
-
-            this.set = function(value) {
-
-            };
-
-            this.send = function() {
-
-            };
-        };
 
         it('should verify the the app/api keys match', function(done) {
             var opts = createOptions(),
-                response,
+                response = new Response(),
                 request = {
                     headers:{
                         'x-api-key':opts.appkey
@@ -92,7 +107,7 @@ describe('MiddlewareDelegate', function() {
 
         it('should reject a request with a bad api key', function(done) {
             var opts = createOptions(),
-                response,
+                response = new Response(),
                 request = {
                     headers:{
                         'x-api-key':opts.appkey
@@ -101,7 +116,6 @@ describe('MiddlewareDelegate', function() {
                 next,
                 delegate;
 
-            response = new Response();
             response.send = function() {
                 done();
             };
@@ -118,7 +132,7 @@ describe('MiddlewareDelegate', function() {
 
         it('should ignore the API key mismatch on option set', function(done) {
             var opts = createOptions(),
-                response,
+                response = new Response(),
                 request = {
                     headers:{
                         'x-api-key':opts.appkey
@@ -127,7 +141,6 @@ describe('MiddlewareDelegate', function() {
                 next,
                 delegate;
 
-            response = new Response();
             next = function() {
                 done();
             };
@@ -141,26 +154,14 @@ describe('MiddlewareDelegate', function() {
     });
 
     describe( 'allowCrossDomain', function() {
-        // mock response
-        var Response = function() {
-            var r = this,
-                values = {};
 
-            this.header = function(key, value) {
-                values[ key ] = value;
-            };
-
-            this.setHeader = this.header;
-            this.getValues = function() { return values; };
-        };
 
         it('should set the response header and invoke next', function(done) {
-            var response,
+            var response = new Response(),
                 request = {},
                 next,
                 delegate;
 
-            response = new Response();
             next = function() {
                 done();
             };
@@ -172,6 +173,41 @@ describe('MiddlewareDelegate', function() {
             values.should.have.property( "Access-Control-Allow-Origin" );
             values.should.have.property( "Access-Control-Allow-Methods" );
             values.should.have.property( "Access-Control-Allow-Headers" );
+        });
+    });
+
+    describe( 'checkProtocol', function() {
+        it('should accept a qualified list of protocols', function(done) {
+            var request = {
+                    protocol:'http'
+                },
+                response = new Response(),
+                delegate = new MiddlewareDelegate( createOptions() ),
+                next;
+
+            next = function() {
+                done();
+            };
+
+            delegate.checkProtocol(request, response, next);
+        });
+
+        it('should reject a non-qualified protocol', function(done) {
+            var request = {
+                    protocol:'http'
+                },
+                response = new Response(),
+                delegate = new MiddlewareDelegate( createOptions() ),
+                next;
+
+            response.send = function() {
+                done();
+            };
+
+            request.protocol = 'xxx';
+            delegate.checkProtocol(request, response, next);
+
+            response.getStatus().should.equal( 406 );
         });
     });
 });

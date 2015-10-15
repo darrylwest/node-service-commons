@@ -196,7 +196,7 @@ describe('CommonValidator', function() {
     describe("isDate", function() {
         var validator = new CommonValidator( createOptions() );
 
-        it("should validate an date address", function() {
+        it("should validate a set of known dates", function() {
             var list = [ new Date(), new Date(2012, 1, 1) ];
 
             list.forEach(function(date) {
