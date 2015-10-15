@@ -154,8 +154,6 @@ describe('MiddlewareDelegate', function() {
     });
 
     describe( 'allowCrossDomain', function() {
-
-
         it('should set the response header and invoke next', function(done) {
             var response = new Response(),
                 request = {},
@@ -173,6 +171,27 @@ describe('MiddlewareDelegate', function() {
             values.should.have.property( "Access-Control-Allow-Origin" );
             values.should.have.property( "Access-Control-Allow-Methods" );
             values.should.have.property( "Access-Control-Allow-Headers" );
+        });
+
+        it('should not set response header if disable cors is set in options', function(done) {
+            var response = new Response(),
+                request = {},
+                next,
+                delegate;
+
+            next = function() {
+                done();
+            };
+
+            var options = createOptions();
+            options.enableCORS = false;
+            delegate = new MiddlewareDelegate( options );
+            delegate.allowCrossDomain( request, response, next );
+
+            var values = response.getValues();
+            values.should.not.have.property( "Access-Control-Allow-Origin" );
+            values.should.not.have.property( "Access-Control-Allow-Methods" );
+            values.should.not.have.property( "Access-Control-Allow-Headers" );
         });
     });
 
