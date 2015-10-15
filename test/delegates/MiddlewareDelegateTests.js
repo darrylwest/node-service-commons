@@ -87,6 +87,7 @@ describe('MiddlewareDelegate', function() {
             var opts = createOptions(),
                 response = new Response(),
                 request = {
+                    ip:'170.3.44.2',
                     headers:{
                         'x-api-key':opts.appkey
                     }
@@ -109,6 +110,7 @@ describe('MiddlewareDelegate', function() {
             var opts = createOptions(),
                 response = new Response(),
                 request = {
+                    ip:'170.3.44.2',
                     headers:{
                         'x-api-key':opts.appkey
                     }
@@ -134,6 +136,7 @@ describe('MiddlewareDelegate', function() {
             var opts = createOptions(),
                 response = new Response(),
                 request = {
+                    ip:'170.3.44.2',
                     headers:{
                         'x-api-key':opts.appkey
                     }
@@ -156,7 +159,9 @@ describe('MiddlewareDelegate', function() {
     describe( 'allowCrossDomain', function() {
         it('should set the response header and invoke next', function(done) {
             var response = new Response(),
-                request = {},
+                request = {
+                    ip:'170.3.44.2'
+                },
                 next,
                 delegate;
 
@@ -175,7 +180,9 @@ describe('MiddlewareDelegate', function() {
 
         it('should not set response header if disable cors is set in options', function(done) {
             var response = new Response(),
-                request = {},
+                request = {
+                    ip:'170.3.44.2'
+                },
                 next,
                 delegate;
 
@@ -198,6 +205,7 @@ describe('MiddlewareDelegate', function() {
     describe( 'checkProtocol', function() {
         it('should accept a qualified list of protocols', function(done) {
             var request = {
+                    ip:'170.3.44.2',
                     protocol:'http'
                 },
                 response = new Response(),
@@ -213,6 +221,7 @@ describe('MiddlewareDelegate', function() {
 
         it('should reject a non-qualified protocol', function(done) {
             var request = {
+                    ip:'170.3.44.2',
                     protocol:'http'
                 },
                 response = new Response(),
