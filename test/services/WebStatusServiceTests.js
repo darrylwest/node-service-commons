@@ -41,7 +41,8 @@ describe('WebStatusService', function() {
                 'createModelPayload',
                 'createListPayload',
                 'calculateDigest',
-                'findIPAddress'
+                'findIPAddress',
+                'createNotFoundError'
             ];
 
         it('should create instance of WebStatusService', function() {

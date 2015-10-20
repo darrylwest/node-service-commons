@@ -39,7 +39,8 @@ describe('AbstractWebService', function() {
                 'createModelPayload',
                 'createListPayload',
                 'calculateDigest',
-                'findIPAddress'
+                'findIPAddress',
+                'createNotFoundError'
             ];
 
         it('should create instance of AbstractWebService', function() {
@@ -201,6 +202,19 @@ describe('AbstractWebService', function() {
             var ip = service.findIPAddress( req );
 
             ip.should.equal( '206.43.23.204' );
+        });
+    });
+
+    describe( 'createNotFoundError', function() {
+        var service = new AbstractWebService( createOptions() );
+
+        it('should return the standard error object and message', function() {
+            var id = '12345',
+                err = service.createNotFoundError( id );
+
+            should.exist( err );
+            err.should.be.instanceof( Error );
+            err.message.indexOf('Not Found' ).should.be.above( 0 );
         });
     });
 });
