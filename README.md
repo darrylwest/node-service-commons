@@ -8,6 +8,8 @@ An MVC platform of common JSON/REST services for node / web applications impleme
 
 The Node Service Commons is a set of components that support REST / web service containers.  The MVC implementation includes factories, data access base classes, delegates, web and data service classes.  Implementation uses classical construction (but not ECMA6 classes yet).
 
+_Requires node 4/5.  If you are using an older version of node, please use the pre-4.0 branch._
+
 ## Controllers Package
 
 A collection of startup and control objects.  Most classes are designed to be extended by concrete web control and configuration objects.
@@ -121,4 +123,4 @@ TODO:
 - example of method overrides
 
 - - -
-<p><small><em>Copyright © 2014-2015, roundpeg | Version 0.90.83</em></small></p>
+<p><small><em>Copyright © 2014-2016, roundpeg | Version 0.91.10</em></small></p>

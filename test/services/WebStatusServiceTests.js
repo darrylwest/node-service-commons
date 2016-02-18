@@ -54,7 +54,7 @@ describe('WebStatusService', function() {
         });
 
         it('should have all known methods by size and type', function() {
-            dash.methods( service ).length.should.equal( methods.length );
+            dash.functionsIn( service ).length.should.equal( methods.length );
             methods.forEach(function(method) {
                 service[ method ].should.be.a( 'function' );
             });

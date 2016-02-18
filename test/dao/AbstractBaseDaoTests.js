@@ -53,7 +53,7 @@ describe('AbstractBaseDao', function() {
         });
 
         it('should have all known methods by size and type', function() {
-            dash.methods( dao ).length.should.equal( methods.length );
+            dash.functionsIn( dao ).length.should.equal( methods.length );
             methods.forEach(function(method) {
                 dao[ method ].should.be.a( 'function' );
             });
@@ -63,7 +63,7 @@ describe('AbstractBaseDao', function() {
             var dao = new MockDao( createOptions() );
 
             should.exist( dao );
-            dash.methods( dao ).length.should.equal( methods.length );
+            dash.functionsIn( dao ).length.should.equal( methods.length );
         });
     });
 

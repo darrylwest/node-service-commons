@@ -36,7 +36,7 @@ describe('AbstractServiceFactory', function() {
         });
 
         it('should have all known methods by size and type', function() {
-            dash.methods( factory ).length.should.equal( methods.length );
+            dash.functionsIn( factory ).length.should.equal( methods.length );
             methods.forEach(function(method) {
                 factory[ method ].should.be.a( 'function' );
             });

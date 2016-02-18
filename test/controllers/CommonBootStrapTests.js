@@ -39,7 +39,7 @@ describe('CommonBootStrap', function() {
         });
 
         it('should have all known methods by size and type', function() {
-            dash.methods( bootStrap ).length.should.equal( methods.length );
+            dash.functionsIn( bootStrap ).length.should.equal( methods.length );
             methods.forEach(function(method) {
                 bootStrap[ method ].should.be.a( 'function' );
             });

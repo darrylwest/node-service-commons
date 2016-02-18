@@ -74,7 +74,7 @@ describe('MiddlewareDelegate', function() {
         });
 
         it('should have all known methods by size and type', function() {
-            dash.methods( delegate ).length.should.equal( methods.length );
+            dash.functionsIn( delegate ).length.should.equal( methods.length );
             methods.forEach(function(method) {
                 delegate[ method ].should.be.a( 'function' );
             });
