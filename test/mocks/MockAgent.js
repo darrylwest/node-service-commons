@@ -4,33 +4,18 @@
  * @author: darryl.west@raincitysoftware.com
  * @created: 12/31/14 8:00 AM
  */
-var dash = require('lodash' ),
+const dash = require('lodash' ),
     superagent = require('superagent');
 
-var MockAgent = function(options) {
+const MockAgent = function(options) {
     'use strict';
 
-    var mock = this,
+    const mock = this,
         agent = superagent;
 
     if (!options) options = {};
 
-    this.response = options.response;
-    this.err = options.err;
-
-    this.get = function(url) {
-        return mockEnd( agent.get( url ) );
-    };
-
-    this.post = function(url) {
-        return mockEnd( agent.post( url ) );
-    };
-
-    this.del = function(url) {
-        return mockEnd( agent.del( url ) );
-    };
-
-    var mockEnd = function(req) {
+    const mockEnd = function(req) {
         var res = mock.response,
             err = mock.err;
 
@@ -47,6 +32,21 @@ var MockAgent = function(options) {
         };
 
         return req;
+    };
+
+    this.response = options.response;
+    this.err = options.err;
+
+    this.get = function(url) {
+        return mockEnd( agent.get( url ) );
+    };
+
+    this.post = function(url) {
+        return mockEnd( agent.post( url ) );
+    };
+
+    this.del = function(url) {
+        return mockEnd( agent.del( url ) );
     };
 
     this.createStandardResponse = function(params) {

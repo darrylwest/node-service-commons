@@ -20,8 +20,8 @@ describe('ServiceRoute', function() {
 
             should.exist( route );
             route.should.have.property( 'method' );
-            route.should.not.have.property( 'path' );
-            route.should.not.have.property( 'fn' );
+            route.should.have.property( 'path' );
+            route.should.have.property( 'fn' );
         });
 
         it('should be a full instance of ServiceRoute', function() {
@@ -47,4 +47,3 @@ describe('ServiceRoute', function() {
         });
     });
 });
-

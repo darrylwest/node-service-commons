@@ -8,8 +8,7 @@ var should = require('chai').should(),
     dash = require('lodash' ),
     MockExpress = require('../mocks/MockExpress' ),
     MockLogger = require('simple-node-logger' ).mocks.MockLogger,
-    WebStatusService = require('../../lib/services/WebStatusService' ),
-    moment = require('moment');
+    WebStatusService = require('../../lib/services/WebStatusService' );
 
 describe('WebStatusService', function() {
     'use strict';
@@ -61,4 +60,7 @@ describe('WebStatusService', function() {
         });
     });
 
+    describe('formatEllapsedTime', function() {
+        it('should format a duration between start and end');
+    });
 });
