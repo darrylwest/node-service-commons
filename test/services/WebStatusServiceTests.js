@@ -4,7 +4,7 @@
  * @author: darryl.west@roundpeg.com
  * @created: 8/11/14 2:49 PM
  */
-var should = require('chai').should(),
+const should = require('chai').should(),
     dash = require('lodash' ),
     MockExpress = require('../mocks/MockExpress' ),
     MockLogger = require('simple-node-logger' ).mocks.MockLogger,
@@ -13,11 +13,10 @@ var should = require('chai').should(),
 describe('WebStatusService', function() {
     'use strict';
 
-    var express = new MockExpress(),
-        createOptions;
+    const express = new MockExpress();
 
-    createOptions = function() {
-        var opts = {};
+    const createOptions = function() {
+        const opts = {};
 
         opts.log = MockLogger.createLogger('WebStatusService');
         opts.dataService = {};
@@ -26,7 +25,7 @@ describe('WebStatusService', function() {
     };
 
     describe('#instance', function() {
-        var service = new WebStatusService( createOptions() ),
+        const service = new WebStatusService( createOptions() ),
             methods = [
                 'getWebStatus',
                 'createWebStatus',
@@ -61,6 +60,20 @@ describe('WebStatusService', function() {
     });
 
     describe('formatEllapsedTime', function() {
-        it('should format a duration between start and end');
+        const service = new WebStatusService( createOptions() );
+
+        it('should format a duration between start and end', function() {
+            let startDate = new Date("2016-01-01T00:00:00"),
+                endDate = new Date("2016-01-10T00:00:00");
+
+            let str = service.formatElapsedTime( startDate, endDate );
+
+            str.should.equal("09 days+00:00:00");
+
+            endDate = new Date("2016-01-25T02:45:02");
+            str = service.formatElapsedTime( startDate, endDate );
+
+            str.should.equal("24 days+02:45:02");
+        });
     });
 });
