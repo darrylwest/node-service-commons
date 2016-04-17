@@ -200,7 +200,18 @@ describe('AbstractBaseDao', function() {
             model.lastUpdated.getTime().should.be.above( ref.lastUpdated.getTime() );
         });
 
-        it('should prepare a new model for insert');
+        it('should prepare a new model for insert', function() {
+            const now = Date.now() - 1;
+            const ref = new AbstractBaseModel();
+
+            const model = dao.prepareUpdate( ref );
+
+            should.exist( model.id );
+            model.id.length.should.equal( 32 );
+            model.version.should.equal( 0 );
+            model.dateCreated.getTime().should.be.above( now );
+            model.lastUpdated.getTime().should.be.above( now );
+        });
     });
 
     describe('insert', function() {
