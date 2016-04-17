@@ -1,3 +1,7 @@
+JSFILES=bin/*.js lib/*/*.js test/*.js test/fixtures/*.js test/mocks/*js
+TESTFILES=test/controllers/*.js test/dao/*.js
+JSHINT=node_modules/jshint/bin/jshint
+MOCHA=node_modules/mocha/bin/mocha
 
 all:
 	@make npm
@@ -6,19 +10,20 @@ all:
 npm:
 	@npm install
 
+jshint:
+	@( $(JSHINT) --verbose --reporter node_modules/jshint-stylish/ $(TESTFILES) $(JSFILES ) )
+
 test:
 	@( [ -d node_modules ] || make npm )
-	@( reporter=spec grunt test )
+	@( $(MOCHA) --reporter dot $(TESTFILES) )
+	@( make jshint )
 
-jshint:
+test-short:
 	@( [ -d node_modules ] || make npm )
-	@( grunt jshint )
+	@( $(MOCHA) --reporter dot $(TESTFILES) )
 
 watch:
-	@( grunt watchall )
-
-docs:
-	@( grunt jsdoc )
+	@( ./watcher.js )
 
 .PHONY:	npm
 .PHONY:	test

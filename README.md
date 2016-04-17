@@ -123,4 +123,4 @@ TODO:
 - example of method overrides
 
 - - -
-<p><small><em>Copyright © 2014-2016, roundpeg | Version 0.91.12</em></small></p>
+<p><small><em>Copyright © 2014-2016, roundpeg | Version 0.91.13</em></small></p>
