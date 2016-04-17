@@ -15,7 +15,7 @@ jshint:
 
 test:
 	@( [ -d node_modules ] || make npm )
-	@( $(MOCHA) --reporter dot $(TESTFILES) )
+	@( $(MOCHA) $(TESTFILES) )
 	@( make jshint )
 
 test-short:
