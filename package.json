@@ -8,7 +8,7 @@
     "url": "https://github.com/darrylwest/node-service-commons.git"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "make test"
   },
   "keywords": [
     "mvc-platform",
