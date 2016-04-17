@@ -4,10 +4,9 @@
  * @author: darryl.west@raincitysoftware.com
  * @created: 9/2/14
  */
-var should = require('chai').should(),
+const should = require('chai').should(),
     dash = require('lodash' ),
     MockLogger = require('simple-node-logger' ).mocks.MockLogger,
-    AbstractBaseModel = require('../../lib/models/AbstractBaseModel'),
     Dataset = require('../fixtures/TestDataset'),
     MockClient = require('mock-redis-client'),
     AbstractBaseModel = require('../../lib/models/AbstractBaseModel' ),
@@ -16,8 +15,8 @@ var should = require('chai').should(),
 describe('AbstractBaseDao', function() {
     'use strict';
 
-    var createOptions = function() {
-        var opts = {};
+    const createOptions = function() {
+        const opts = {};
 
         opts.log = MockLogger.createLogger('AbstractBaseDao');
         opts.domain = 'MyDomainName';
@@ -29,7 +28,7 @@ describe('AbstractBaseDao', function() {
         return opts;
     };
 
-    var MockDao = function(options) {
+    const MockDao = function(options) {
         AbstractBaseDao.extend( this, options );
     };
 
@@ -42,6 +41,7 @@ describe('AbstractBaseDao', function() {
                 'findById',
                 'insert',
                 'update',
+                'prepareUpdate',
                 'parseModel'
             ];
 
@@ -183,15 +183,45 @@ describe('AbstractBaseDao', function() {
         });
     });
 
+    describe('prepareUpdate', function() {
+        const dao = new AbstractBaseDao( createOptions());
+
+        it('should prepare a model for update', function() {
+            const ref = new Dataset().createModel();
+            ref.dateCreated = new Date("2015-01-01");
+            ref.lastUpdated = new Date( Date.now() - 500 );
+            ref.version = 25;
+
+            const model = dao.prepareUpdate( ref );
+
+            model.id.should.equal( ref.id );
+            model.version.should.equal( ref.version );
+            model.dateCreated.should.equal( ref.dateCreated );
+            model.lastUpdated.getTime().should.be.above( ref.lastUpdated.getTime() );
+        });
+
+        it('should prepare a new model for insert', function() {
+            const now = Date.now() - 1;
+            const ref = new AbstractBaseModel();
+
+            const model = dao.prepareUpdate( ref );
+
+            should.exist( model.id );
+            model.id.length.should.equal( 32 );
+            model.version.should.equal( 0 );
+            model.dateCreated.getTime().should.be.above( now );
+            model.lastUpdated.getTime().should.be.above( now );
+        });
+    });
+
     describe('insert', function() {
-        var dao = new AbstractBaseDao( createOptions()),
+        const dao = new AbstractBaseDao( createOptions()),
             client = new MockClient();
 
         it('should insert a new model with base properties', function(done) {
-            var ref = new Dataset().createModel(),
-                callback;
+            const ref = new Dataset().createModel();
 
-            callback = function(err, model) {
+            const callback = function(err, model) {
                 should.not.exist( err );
                 should.exist( model );
 
@@ -207,10 +237,9 @@ describe('AbstractBaseDao', function() {
         });
 
         it('should insert a new model with base properties', function(done) {
-            var ref = new AbstractBaseModel(),
-                callback;
+            const ref = new AbstractBaseModel();
 
-            callback = function(err, model) {
+            const callback = function(err, model) {
                 should.not.exist( err );
                 should.exist( model );
 
