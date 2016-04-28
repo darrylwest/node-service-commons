@@ -1,6 +1,7 @@
 # Node Service Commons To Do List
 - - -
 
+* verify tests in node6
 - implement AbstractRedisDao with promises
 - implement AbstractMySQLDao with promises
 - implemented small demo client
@@ -8,5 +9,5 @@
 - websocket validation message handler
 
 - - -
-<p><small><em>last updated April 17th, 2016</em></small></p>
+###### last updated April 17th, 2016
 
