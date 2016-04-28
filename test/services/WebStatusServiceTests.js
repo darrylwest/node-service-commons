@@ -79,7 +79,6 @@ describe('WebStatusService', function() {
             service.getErrors().length.should.equal( 0 );
             process.emit('error', new Error('my error message'));
             service.getErrors().length.should.equal( 1 );
-            console.log( service.getErrors() );
         });
     });
 
