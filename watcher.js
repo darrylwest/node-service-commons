@@ -33,8 +33,8 @@ const spawnJob = function( runner ) {
 
 const run = function() {
     console.log( 'files: ', jsfiles );
-    spawnJob( spawn( 'make', [ 'jshint' ]));
-    spawnJob( spawn( 'make', [ 'test-short' ]));
+    spawnJob( spawn( 'make', [ '-s', 'jshint' ]));
+    spawnJob( spawn( 'make', [ '-s', 'test-short' ]));
     // spawnJob( spawn( './node_modules/mocha/bin/mocha', [ 'test/dao/UserDaoTests.js' ] ));
 
     jsfiles.clear();
