@@ -13,13 +13,17 @@ const MockAgent = function(options) {
     const mock = this,
         agent = superagent;
 
-    if (!options) options = {};
+    if (!options) {
+        options = {};
+    }
 
     const mockEnd = function(req) {
-        var res = mock.response,
+        let res = mock.response,
             err = mock.err;
 
-        if (!res) res = mock.createStandardResponse();
+        if (!res) {
+            res = mock.createStandardResponse();
+        }
 
         req.end = function(callback) {
             req.abort();

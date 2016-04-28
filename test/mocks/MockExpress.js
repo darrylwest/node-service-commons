@@ -50,7 +50,9 @@ var MockExpress = function() {
     };
 
     this.createRequest = function(obj) {
-        if (!obj.method) obj.method = 'GET';
+        if (!obj.method) {
+            obj.method = 'GET';
+        }
 
         var request = httpMocks.createExpressRequest( obj );
         request.ip = '127.0.0.1';
@@ -65,7 +67,7 @@ var MockExpress = function() {
      * @returns the mock response object
      */
     this.createResponse = function(callback) {
-        var response = httpMocks.createExpressResponse();
+        const response = httpMocks.createExpressResponse();
 
         // TODO override send and json to set the statusCode
 

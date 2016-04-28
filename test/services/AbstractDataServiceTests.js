@@ -4,7 +4,7 @@
  * @author: darryl.west@roundpeg.com
  * @created: 8/11/14 1:44 PM
  */
-var should = require('chai').should(),
+const should = require('chai').should(),
     dash = require('lodash' ),
     MockLogger = require('simple-node-logger' ).mocks.MockLogger,
     AbstractDataService = require('../../lib/services/AbstractDataService');
@@ -12,8 +12,8 @@ var should = require('chai').should(),
 describe('AbstractDataService', function() {
     'use strict';
 
-    var createOptions = function() {
-        var opts = {};
+    const createOptions = function() {
+        const opts = {};
 
         opts.log = MockLogger.createLogger('AbstractDataService');
 
@@ -21,7 +21,7 @@ describe('AbstractDataService', function() {
     };
 
     describe('#instance', function() {
-        var service = new AbstractDataService( createOptions() ),
+        const service = new AbstractDataService( createOptions() ),
             methods = [
                 'query',
                 'save',
@@ -43,10 +43,10 @@ describe('AbstractDataService', function() {
     });
 
     describe("parseInt", function() {
-        var service = new AbstractDataService( createOptions() );
+        const service = new AbstractDataService( createOptions() );
 
         it("should parse integers and return values", function() {
-            var list = [ 23, '44', '22', 54443 ];
+            const list = [ 23, '44', '22', 54443 ];
 
             list.forEach(function(value) {
                 var n = service.parseInt( value, 1 );
@@ -55,7 +55,7 @@ describe('AbstractDataService', function() {
         });
 
         it("should fail parse of non-numbers and return defaults", function() {
-            var list = [ 'zzz', 'z432L', 'abba' ],
+            const list = [ 'zzz', 'z432L', 'abba' ],
                 dflt = 9999;
 
             list.forEach(function(value) {
