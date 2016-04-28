@@ -64,6 +64,25 @@ describe('WebStatusService', function() {
         });
     });
 
+    describe('testHandlers', function() {
+        const service = new WebStatusService( createOptions() );
+
+        service.initListeners();
+        it('should respond to an emitted warning', function() {
+            service.getWarnings().length.should.equal( 0 );
+            process.emit('warning', new Error('my warning message'));
+            service.getWarnings().length.should.equal( 1 );
+
+        });
+
+        it('should respond to an emitted error', function() {
+            service.getErrors().length.should.equal( 0 );
+            process.emit('error', new Error('my error message'));
+            service.getErrors().length.should.equal( 1 );
+            console.log( service.getErrors() );
+        });
+    });
+
     describe('formatEllapsedTime', function() {
         const service = new WebStatusService( createOptions() );
 
