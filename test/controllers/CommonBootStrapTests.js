@@ -4,19 +4,22 @@
  * @author: darryl.west@roundpeg.com
  * @created: 8/10/14 3:40 PM
  */
-var should = require('chai').should(),
+const should = require('chai').should(),
     dash = require('lodash' ),
     CommonBootStrap = require( '../../lib/controllers/CommonBootStrap' );
 
 describe('CommonBootStrap', function() {
     'use strict';
 
-    var logfile = '/tmp/junk.log',
+    let logfile = '/tmp/junk.log',
         createCommandLine;
 
     createCommandLine = function(env) {
-        if (!env) env = 'test';
-        var args = [
+        if (!env) {
+            env = 'test';
+        }
+
+        const args = [
             "/usr/local/bin/node",
             "/response-averages/app/app.js",
             "--env",
@@ -27,7 +30,7 @@ describe('CommonBootStrap', function() {
     };
 
     describe( '#instance', function() {
-        var bootStrap = new CommonBootStrap( 'test-version' ),
+        const bootStrap = new CommonBootStrap( 'test-version' ),
             methods = [
                 'getParser',
                 'parseCommandLine'
@@ -49,10 +52,10 @@ describe('CommonBootStrap', function() {
     describe( 'parseCommandLine', function() {
         it( 'should parse the command line to set options', function() {
 
-            var args = createCommandLine('test');
-            var bootStrap = new CommonBootStrap( 'test-version' );
+            const args = createCommandLine('test');
+            const bootStrap = new CommonBootStrap( 'test-version' );
 
-            var options = bootStrap.parseCommandLine( args );
+            const options = bootStrap.parseCommandLine( args );
 
             should.exist( options );
 

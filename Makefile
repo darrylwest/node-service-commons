@@ -1,7 +1,7 @@
-JSFILES=bin/*.js lib/*.js lib/*/*.js test/*.js test/*/*.js
+JSFILES=lib/*/*.js test/*.js test/*/*.js watcher.js
 TESTFILES=test/controllers/*.js test/dao/*.js test/delegates/*.js test/models/*.js test/services/*.js
-JSHINT=node_modules/jshint/bin/jshint
-MOCHA=node_modules/mocha/bin/mocha
+JSHINT=node_modules/.bin/jshint
+MOCHA=node_modules/.bin/mocha
 
 all:
 	@make npm
@@ -11,7 +11,7 @@ npm:
 	@npm install
 
 jshint:
-	@( $(JSHINT) --verbose --reporter node_modules/jshint-stylish/ $(JSFILES ) )
+	@( $(JSHINT) --verbose --reporter node_modules/jshint-stylish/ $(JSFILES) )
 
 test:
 	@( [ -d node_modules ] || make npm )

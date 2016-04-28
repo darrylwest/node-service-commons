@@ -30,7 +30,10 @@ describe('WebStatusService', function() {
                 'getWebStatus',
                 'createWebStatus',
                 'formatElapsedTime',
+                'getWarnings',
+                'getErrors',
                 'warningHandler',
+                'errorHandler',
                 'initListeners',
                 // inherited
                 'query',

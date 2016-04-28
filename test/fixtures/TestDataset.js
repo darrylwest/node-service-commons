@@ -4,21 +4,21 @@
  * @author: darryl.west@roundpeg.com
  * @created: 8/11/14 10:36 AM
  */
-var dash = require("lodash" ),
+const dash = require("lodash" ),
     uuid = require('node-uuid'),
     AbstractBaseModel = require('../../lib/models/AbstractBaseModel');
 
-var TestDataset = function() {
+const TestDataset = function() {
     "use strict";
 
-    var dataset = this;
+    const dataset = this;
 
     /**
      * create the standard ID using uuid without separators
      * @returns generated id
      */
     this.createId = function() {
-        var id = uuid.v4();
+        let id = uuid.v4();
 
         return id.replace(/-/g, '');
     };
@@ -61,10 +61,12 @@ var TestDataset = function() {
      * @param fn - a closure to create a single model
      */
     this.createModelList = function(count, fn) {
-        var n = (typeof count === "number") ? count : 10;
-        if (!fn) fn = dataset.createModel;
+        let n = (typeof count === "number") ? count : 10;
+        if (!fn) {
+            fn = dataset.createModel;
+        }
 
-        var list = [];
+        let list = [];
 
         for (var i = 0; i < n; i++) {
             list.push( fn.call() );
