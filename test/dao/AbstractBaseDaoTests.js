@@ -191,10 +191,9 @@ describe('AbstractBaseDao', function() {
         });
 
         it('should find and return a known model by id', function(done) {
-            var ref = list[0],
-                callback;
+            const ref = list[0];
 
-            callback = function(err, model) {
+            const callback = function(err, model) {
                 should.not.exist( err );
                 should.exist( model );
 
@@ -212,10 +211,9 @@ describe('AbstractBaseDao', function() {
         });
 
         it('should not find an unknown id', function(done) {
-            var id = 'bad-id',
-                callback;
+            const id = 'bad-id';
 
-            callback = function(err, model) {
+            const callback = function(err, model) {
                 should.not.exist( err );
                 should.not.exist( model );
 
@@ -300,15 +298,15 @@ describe('AbstractBaseDao', function() {
     });
 
     describe('update', function() {
-        var dao = new AbstractBaseDao( createOptions()),
+        const dao = new AbstractBaseDao( createOptions()),
             client = new MockClient(),
             list = new Dataset().createModelList(5);
 
         beforeEach(function(done) {
-            var mlist = [];
+            let mlist = [];
 
             list.forEach(function(model) {
-                var key = dao.createDomainKey( model.id );
+                const key = dao.createDomainKey( model.id );
 
                 mlist.push( key );
                 model.name = 'flarb';
@@ -320,12 +318,11 @@ describe('AbstractBaseDao', function() {
         });
 
         it('should update an existing model', function(done) {
-            var ref = list[0],
-                callback;
+            let ref = list[0];
 
             ref.name = 'newberg';
 
-            callback = function(err, model) {
+            const callback = function(err, model) {
                 should.not.exist( err );
                 should.exist( model );
 
