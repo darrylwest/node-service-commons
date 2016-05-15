@@ -42,7 +42,8 @@ describe('AbstractBaseDao', function() {
                 'insert',
                 'update',
                 'prepareUpdate',
-                'parseModel'
+                'parseModel',
+                'parseModelList'
             ];
 
         it('should create an instance of AbstractBaseDao', function() {
