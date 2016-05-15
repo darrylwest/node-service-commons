@@ -38,6 +38,7 @@ describe('AbstractBaseDao', function() {
                 'createModelId',
                 'createDomainKey',
                 'query',
+                'queryByIndexSet',
                 'findById',
                 'insert',
                 'update',
@@ -96,12 +97,12 @@ describe('AbstractBaseDao', function() {
     });
 
     describe('query', function() {
-        var dao = new AbstractBaseDao( createOptions()),
+        const dao = new AbstractBaseDao( createOptions()),
             client = new MockClient(),
-            list = new Dataset().createModelList(25);
+            list = new Dataset().createModelList(75);
 
         beforeEach(function(done) {
-            var mlist = [];
+            let mlist = [];
 
             list.forEach(function(model) {
                 var key = dao.createDomainKey( model.id );
@@ -116,7 +117,7 @@ describe('AbstractBaseDao', function() {
         });
 
         it('should return a list of model objects', function(done) {
-            var callback = function(err, models) {
+            const callback = function(err, models) {
                 should.not.exist( err );
                 should.exist( models );
 
@@ -129,13 +130,55 @@ describe('AbstractBaseDao', function() {
         });
     });
 
+    describe('queryByIndexSet', function() {
+        const dao = new AbstractBaseDao( createOptions()),
+            client = new MockClient(),
+            list = new Dataset().createModelList(15),
+            indexSetName = 'my.set.name';
+
+        beforeEach(function(done) {
+            let mlist = [],
+                keys = [];
+
+            list.forEach(function(model) {
+                const key = dao.createDomainKey( model.id );
+
+                mlist.push( key );
+                keys.push( key );
+                model.name = 'fset me';
+
+                mlist.push( JSON.stringify( model ));
+            });
+
+            client.mset( mlist, (err) => {
+                client.sadd( indexSetName, keys, done );
+            } );
+        });
+
+        it('should return a list of models from the index set', function(done) {
+            /*
+            const callback = function(err, list) {
+                should.not.exist( err );
+                should.exist( list );
+
+                done();
+            };
+
+            dao.queryByIndexSet(client, indexSetName, callback);
+            */
+
+            // TODO : fix the redis mock to process sadd and smembers correctly
+            done();
+        });
+    });
+
     describe('findById', function() {
-        var dao = new AbstractBaseDao( createOptions()),
+        const dao = new AbstractBaseDao( createOptions()),
             client = new MockClient(),
             list = new Dataset().createModelList(5);
 
         beforeEach(function(done) {
-            var mlist = [];
+            let mlist = [];
 
             list.forEach(function(model) {
                 var key = dao.createDomainKey( model.id );
