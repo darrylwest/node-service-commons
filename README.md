@@ -123,4 +123,4 @@ TODO:
 - example of method overrides
 
 - - -
-<p><small><em>Copyright © 2014-2016, rain city software | Version 0.91.15</em></small></p>
+<p><small><em>Copyright © 2014-2016, rain city software | Version 0.91.18</em></small></p>
