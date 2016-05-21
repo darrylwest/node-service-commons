@@ -5,7 +5,7 @@
  * @created: 12/31/14 8:00 AM
  */
 const dash = require('lodash' ),
-    superagent = require('superagent');
+    superagent = require('superagent'); // requires version 2
 
 const MockAgent = function(options) {
     'use strict';
@@ -25,10 +25,9 @@ const MockAgent = function(options) {
             res = mock.createStandardResponse();
         }
 
+        // override the end method
         req.end = function(callback) {
-            if (req && dash.isFunction( req.abort )) {
-                req.abort();
-            }
+            req.abort();
 
             if (callback) {
                 callback( err, res );
