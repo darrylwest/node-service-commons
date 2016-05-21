@@ -26,7 +26,9 @@ const MockAgent = function(options) {
         }
 
         req.end = function(callback) {
-            req.abort();
+            if (req && dash.isFunction( req.abort )) {
+                req.abort();
+            }
 
             if (callback) {
                 callback( err, res );
