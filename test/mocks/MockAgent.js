@@ -30,10 +30,10 @@ const MockAgent = function(options) {
             req.abort();
 
             if (callback) {
-                callback( err, res );
+                return callback( err, res );
+            } else {
+                return res;
             }
-
-            return res;
         };
 
         return req;
@@ -54,11 +54,11 @@ const MockAgent = function(options) {
         return mockEnd( agent.del( url ) );
     };
 
-    this.createStandardResponse = function(params) {
+    this.createStandardResponse = function(body) {
         var res = {};
 
         res.status = res.statusCode = 200;
-        res.type = 2;
+        res.statusType = 2;
         res.ok = true;
         res.error = false;
         res.info = false;
@@ -72,7 +72,7 @@ const MockAgent = function(options) {
             'content-type': 'application/json'
         };
 
-        res.body = params || {};
+        res.body = body || { status:'ok', ts:Date.now(), version:'1.0' };
 
         return res;
     };
