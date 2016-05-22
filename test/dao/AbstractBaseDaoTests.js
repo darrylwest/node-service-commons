@@ -42,6 +42,7 @@ describe('AbstractBaseDao', function() {
                 'findById',
                 'insert',
                 'update',
+                'updateAndExpire',
                 'prepareUpdate',
                 'parseModel',
                 'parseModelList'
@@ -336,6 +337,30 @@ describe('AbstractBaseDao', function() {
             };
 
             dao.update( client, ref, callback );
+        });
+    });
+
+    describe('updateAndExpire', function() {
+        const dao = new AbstractBaseDao( createOptions()),
+            client = new MockClient();
+
+        it('should update or insert a record and set expire', function(done) {
+            const ref = new Dataset().createModel();
+
+            const callback = function(err, model) {
+                should.not.exist( err );
+                should.exist( model );
+
+                model.id.should.equal( ref.id );
+                model.dateCreated.getTime().should.equal( ref.dateCreated.getTime() );
+                // model.lastUpdated.getTime().should.equal( ref.lastUpdated.getTime() );
+                model.version.should.equal( ref.version );
+
+                done();
+            };
+
+            const ttl = 20;
+            dao.updateAndExpire( client, ref, ttl, callback );
         });
     });
 });
