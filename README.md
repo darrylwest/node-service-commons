@@ -106,6 +106,49 @@ The IndexPageService presents a very simple HTML page displaying the application
 
 WebStatusService is used to report the web container's current status.  Values include up-time, available memory, the environment name, version, etc.
 
+Errors and warnings are tracked by listening for process events 'error' and 'warning'.  To enable error and warning listeners, simply invoke 'initListeners()' on the web status service.  This is usually done in the application's implementation of ApplicationFactory like this:
+
+```
+const services = factory.createWebServices( factory.createServiceFactory(), webServiceList );
+const service = services.find(svc => svc.serviceName === 'WebStatusService');
+service.initListeners();
+```
+
+_or like this_
+
+```
+const services = factory.createWebServices( factory.createServiceFactory(), webServiceList );
+services.forEach(service => {
+	if (typeof service.initListeners === 'function') {
+		service.initListeners();
+	}
+});
+```
+
+Accessing web status shows the warning and error count.  Here is a sample status dump:
+
+```
+{ status: 'ok',
+  ts: 1464107033676,
+  version: '1.0',
+  webStatus: {
+     version: '00.91.60',
+     env: 'production',
+     epoch: '2016-05-22T19:25:07.015Z',
+     uptime: '01 days+20:58:46',
+     warnings: 0,
+     errors: 0,
+     process: { pid: 1, title: 'node', vers: 'v4.4.3' },
+     totalmem: 1928470528,
+     freemem: 261324800,
+     loadavg: [ 0.00341796875, 0.02392578125, 0.04541015625 ],
+     arch: 'x64' 
+   } 
+}
+```
+
+_This format may change in future versions but typically to add new attributes._
+
 ## Mocks
 
 - MockExpress
@@ -123,4 +166,4 @@ TODO:
 - example of method overrides
 
 - - -
-<p><small><em>Copyright © 2014-2016, rain city software | Version 0.91.21</em></small></p>
+<p><small><em>Copyright © 2014-2016, rain city software | Version 0.91.22</em></small></p>
