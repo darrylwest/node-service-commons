@@ -6,7 +6,14 @@
 
 const fs = require( 'fs' ),
     dash = require( 'lodash' ),
-    spawn = require( 'child_process' ).spawn;
+    spawn = require( 'child_process' ).spawn,
+    clearScreen = function() {
+        /* jshint -W100 */
+        /* jshint -W113 */
+        process.stdout.write( '[H[2J' );
+        /* jshint +W113 */
+        /* jshint +W100 */
+    };
 
 let jsfiles = new Set(),
     tid,
@@ -32,6 +39,7 @@ const spawnJob = function( runner ) {
 };
 
 const run = function() {
+    clearScreen();
     console.log( 'files: ', jsfiles );
     spawnJob( spawn( 'make', [ '-s', 'jshint' ]));
     spawnJob( spawn( 'make', [ '-s', 'test-short' ]));

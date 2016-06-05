@@ -4,7 +4,7 @@
  * @author: darryl.west@roundpeg.com
  * @created: 8/11/14 10:12 AM
  */
-var should = require('chai').should(),
+const should = require('chai').should(),
     dash = require('lodash' ),
     MockLogger = require('simple-node-logger' ).mocks.MockLogger,
     MiddlewareDelegate = require('../../lib/delegates/MiddlewareDelegate');
@@ -12,8 +12,8 @@ var should = require('chai').should(),
 describe('MiddlewareDelegate', function() {
     'use strict';
 
-    var createOptions = function() {
-        var opts = {};
+    const createOptions = function() {
+        const opts = {};
 
         opts.log = new MockLogger.createLogger('MiddlewareDelegate');
         opts.appkey = 'ae3b1d1c-7a44-45f6-82f5-0a4eb789ae10';
@@ -23,8 +23,8 @@ describe('MiddlewareDelegate', function() {
     };
 
     // mock response
-    var Response = function() {
-        var r = this,
+    const Response = function() {
+        let r = this,
             status,
             params = {},
             values = {};
@@ -60,7 +60,7 @@ describe('MiddlewareDelegate', function() {
     };
 
     describe('#instance', function() {
-        var delegate = new MiddlewareDelegate( createOptions() ),
+        const delegate = new MiddlewareDelegate( createOptions() ),
             methods = [
                 'checkAPIKey',
                 'allowCrossDomain',
@@ -84,7 +84,7 @@ describe('MiddlewareDelegate', function() {
     describe('checkAPIKey', function() {
 
         it('should verify the the app/api keys match', function(done) {
-            var opts = createOptions(),
+            let opts = createOptions(),
                 response = new Response(),
                 request = {
                     ip:'170.3.44.2',
@@ -107,7 +107,7 @@ describe('MiddlewareDelegate', function() {
         });
 
         it('should reject a request with a bad api key', function(done) {
-            var opts = createOptions(),
+            let opts = createOptions(),
                 response = new Response(),
                 request = {
                     ip:'170.3.44.2',
@@ -133,7 +133,7 @@ describe('MiddlewareDelegate', function() {
         });
 
         it('should ignore the API key mismatch on option set', function(done) {
-            var opts = createOptions(),
+            let opts = createOptions(),
                 response = new Response(),
                 request = {
                     ip:'170.3.44.2',
@@ -154,11 +154,33 @@ describe('MiddlewareDelegate', function() {
             delegate = new MiddlewareDelegate( opts );
             delegate.checkAPIKey( request, response, next );
         });
+
+        it('should ignore the API key for index page', function(done) {
+            let opts = createOptions(),
+                response = new Response(),
+                request = {
+                    method:'GET',
+                    url:'/index.html',
+                    ip:'170.3.44.2',
+                    headers:{}
+                },
+                next,
+                delegate;
+
+            next = function() {
+                done();
+            };
+
+            opts.appkeyTimeout = 50;
+            opts.includeXAPIKey = true;
+            delegate = new MiddlewareDelegate( opts );
+            delegate.checkAPIKey( request, response, next );
+        });
     });
 
     describe( 'allowCrossDomain', function() {
         it('should set the response header and invoke next', function(done) {
-            var response = new Response(),
+            let response = new Response(),
                 request = {
                     ip:'170.3.44.2'
                 },
@@ -172,14 +194,14 @@ describe('MiddlewareDelegate', function() {
             delegate = new MiddlewareDelegate( createOptions() );
             delegate.allowCrossDomain( request, response, next );
 
-            var values = response.getValues();
+            const values = response.getValues();
             values.should.have.property( "Access-Control-Allow-Origin" );
             values.should.have.property( "Access-Control-Allow-Methods" );
             values.should.have.property( "Access-Control-Allow-Headers" );
         });
 
         it('should not set response header if disable cors is set in options', function(done) {
-            var response = new Response(),
+            let response = new Response(),
                 request = {
                     ip:'170.3.44.2'
                 },
@@ -190,12 +212,12 @@ describe('MiddlewareDelegate', function() {
                 done();
             };
 
-            var options = createOptions();
+            const options = createOptions();
             options.enableCORS = false;
             delegate = new MiddlewareDelegate( options );
             delegate.allowCrossDomain( request, response, next );
 
-            var values = response.getValues();
+            const values = response.getValues();
             values.should.not.have.property( "Access-Control-Allow-Origin" );
             values.should.not.have.property( "Access-Control-Allow-Methods" );
             values.should.not.have.property( "Access-Control-Allow-Headers" );
@@ -204,7 +226,7 @@ describe('MiddlewareDelegate', function() {
 
     describe( 'checkProtocol', function() {
         it('should accept a qualified list of protocols', function(done) {
-            var request = {
+            let request = {
                     ip:'170.3.44.2',
                     protocol:'http'
                 },
@@ -220,7 +242,7 @@ describe('MiddlewareDelegate', function() {
         });
 
         it('should reject a non-qualified protocol', function(done) {
-            var request = {
+            let request = {
                     ip:'170.3.44.2',
                     protocol:'http'
                 },
