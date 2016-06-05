@@ -14,7 +14,6 @@ jshint:
 	@( $(JSHINT) --verbose --reporter node_modules/jshint-stylish/ $(JSFILES) )
 
 test:
-	@( [ -d node_modules ] || make npm )
 	@( $(MOCHA) $(TESTFILES) )
 	@( make jshint )
 

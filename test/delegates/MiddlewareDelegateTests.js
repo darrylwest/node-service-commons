@@ -155,27 +155,7 @@ describe('MiddlewareDelegate', function() {
             delegate.checkAPIKey( request, response, next );
         });
 
-        it('should ignore the API key for index page', function(done) {
-            let opts = createOptions(),
-                response = new Response(),
-                request = {
-                    method:'GET',
-                    url:'/index.html',
-                    ip:'170.3.44.2',
-                    headers:{}
-                },
-                next,
-                delegate;
-
-            next = function() {
-                done();
-            };
-
-            opts.appkeyTimeout = 50;
-            opts.includeXAPIKey = true;
-            delegate = new MiddlewareDelegate( opts );
-            delegate.checkAPIKey( request, response, next );
-        });
+        it('should ignore the API key for index page');
     });
 
     describe( 'allowCrossDomain', function() {
