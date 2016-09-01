@@ -1,6 +1,6 @@
 {
   "name": "node-service-commons",
-  "version": "0.91.24",
+  "version": "0.91.25",
   "description": "An MVC platform of common REST services for node / web applications implemented for classical instantiation and inheritance.",
   "main": "./index.js",
   "repository": {
@@ -26,7 +26,6 @@
     "commander": "^2.9.0",
     "datetimejs": "^0.3.4",
     "express-mocks-http": "0.0.11",
-    "jshint": "^2.9.1",
     "lodash": "^4.9",
     "node-uuid": "^1.4.7",
     "simple-node-logger": "^0.93.11",
