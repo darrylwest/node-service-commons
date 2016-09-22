@@ -132,7 +132,7 @@ describe('AbstractApplicationFactory', function() {
 
             factory.initMiddleware( app );
 
-            app.uses.length.should.equal( 5 );
+            app.uses.length.should.equal( 6 );
         });
     });
 });

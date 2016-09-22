@@ -62,6 +62,7 @@ describe('MiddlewareDelegate', function() {
     describe('#instance', function() {
         const delegate = new MiddlewareDelegate( createOptions() ),
             methods = [
+                'forceSecure',
                 'checkAPIKey',
                 'allowCrossDomain',
                 'checkProtocol',
@@ -206,15 +207,14 @@ describe('MiddlewareDelegate', function() {
 
     describe( 'checkProtocol', function() {
         it('should accept a qualified list of protocols', function(done) {
-            let request = {
+            const request = {
                     ip:'170.3.44.2',
                     protocol:'http'
                 },
                 response = new Response(),
-                delegate = new MiddlewareDelegate( createOptions() ),
-                next;
+                delegate = new MiddlewareDelegate( createOptions() );
 
-            next = function() {
+            const next = function() {
                 done();
             };
 
@@ -239,5 +239,41 @@ describe('MiddlewareDelegate', function() {
 
             response.getStatus().should.equal( 406 );
         });
+    });
+
+    describe('forceSecure', function() {
+        const delegate = new MiddlewareDelegate( createOptions() );
+
+        it('should redirect to https if not secure', function(done) {
+            const request = {
+                hostname:'mydomain.com',
+                originalUrl:'/mypage',
+                ip:'170.3.44.2',
+                protocal:'http',
+                headers:{
+                    'x-forwarded-proto':'http'
+                },
+            },
+            response = new Response();
+                
+            response.redirect = function(url) {
+                should.exist( url );
+                url.should.equal('https://mydomain.com/mypage');
+
+                done();
+            };
+
+            delegate.forceSecure(request, response, (rq, rs) => {
+                should.not.exist( rq );
+                should.not.exist( rs );
+            });
+        });
+
+        it('should ignore redirect if is secure', function(done) {
+            done();
+        });
+
+        it('should ignore redirect if from localhost');
+        it('should ignore redirect if no x-forwared-proto');
     });
 });
