@@ -270,10 +270,52 @@ describe('MiddlewareDelegate', function() {
         });
 
         it('should ignore redirect if is secure', function(done) {
-            done();
+            const request = {
+                hostname:'mydomain.com',
+                originalUrl:'/mypage',
+                ip:'170.3.44.2',
+                protocal:'http',
+                headers:{
+                    'x-forwarded-proto':'https'
+                },
+            },
+            response = new Response();
+
+            delegate.forceSecure(request, response, (rq, rs) => {
+                done();
+            });
         });
 
-        it('should ignore redirect if from localhost');
-        it('should ignore redirect if no x-forwared-proto');
+        it('should ignore redirect if from localhost', function(done) {
+            const request = {
+                hostname:'localhost',
+                originalUrl:'/mypage',
+                ip:'127.0.0.1',
+                protocal:'http',
+                headers:{
+                    'x-forwarded-proto':'http'
+                },
+            },
+            response = new Response();
+
+            delegate.forceSecure(request, response, (rq, rs) => {
+                done();
+            });
+        });
+
+        it('should ignore redirect if no x-forwared-proto', function(done) {
+            const request = {
+                hostname:'mydomain.com',
+                originalUrl:'/mypage',
+                ip:'170.3.44.2',
+                protocal:'http',
+                headers:{}
+            },
+            response = new Response();
+
+            delegate.forceSecure(request, response, (rq, rs) => {
+                done();
+            });
+        });
     });
 });
