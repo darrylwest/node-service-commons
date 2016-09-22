@@ -18,6 +18,7 @@ describe('MiddlewareDelegate', function() {
         opts.log = new MockLogger.createLogger('MiddlewareDelegate');
         opts.appkey = 'ae3b1d1c-7a44-45f6-82f5-0a4eb789ae10';
         opts.acceptedProtocols = [ 'http', 'https' ];
+        opts.verifySecure = true;
 
         return opts;
     };
