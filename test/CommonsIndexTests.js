@@ -68,6 +68,10 @@ describe('CommonsIndex', function() {
             commons.services.AbstractDataService.should.be.a('function');
         });
 
+        it('should contain AbstractPageService', function() {
+            commons.services.AbstractPageService.should.be.a('function');
+        });
+
         it('should contain AbstractWebService', function() {
             commons.services.AbstractWebService.should.be.a('function');
         });

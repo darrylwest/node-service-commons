@@ -34,6 +34,7 @@ module.exports = {
     },
     services: {
         AbstractDataService: require( './lib/services/AbstractDataService' ),
+        AbstractPageService: require( './lib/services/AbstractPageService' ),
         AbstractWebService: require( './lib/services/AbstractWebService' ),
         WebStatusService: require( './lib/services/WebStatusService' ),
         IndexPageService: require( './lib/services/IndexPageService' )
