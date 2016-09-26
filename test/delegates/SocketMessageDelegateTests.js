@@ -122,9 +122,29 @@ describe('SocketMessageDelegate', function() {
             Object.keys( wrapper ).length.should.equal( 2 );
         });
 
-        it('should return a standard response wrapper');
+        it('should return a standard response wrapper', function() {
+            const wrapper = delegate.createResponseWrapper('1234');
+            should.exist( wrapper );
+            wrapper.mid.should.equal( '1234' );
+            should.exist( wrapper.ts );
+            wrapper.status.should.equal( 'ok' );
+        });
 
-        it('should return a standard failed wrapper');
-        it('should return a standard failed wrapper with reason');
+        it('should return a standard failed wrapper', function() {
+            const wrapper = delegate.createFailedWrapper('1234');
+            should.exist( wrapper );
+            wrapper.mid.should.equal( '1234' );
+            should.exist( wrapper.ts );
+            wrapper.status.should.equal( 'failed' );
+        });
+
+        it('should return a standard failed wrapper with reason', function() {
+            const wrapper = delegate.createFailedWrapper('1234', 'because');
+            should.exist( wrapper );
+            wrapper.mid.should.equal( '1234' );
+            should.exist( wrapper.ts );
+            wrapper.status.should.equal( 'failed' );
+            wrapper.reason.should.equal( 'because' );
+        });
     });
 });
