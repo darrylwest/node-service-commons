@@ -1,7 +1,7 @@
 /**
+ * @class MiddlewareDelegateTests
  *
- *
- * @author: darryl.west@roundpeg.com
+ * @author: darryl.west@raincitysoftware.com
  * @created: 8/11/14 10:12 AM
  */
 const should = require('chai').should(),
