@@ -93,12 +93,34 @@ describe('SocketMessageDelegate', function() {
     });
 
     describe('#getters', function() {
-        it('should return the origin');
-        it('should return the message count');
+        const delegate = new SocketMessageDelegate( createOptions() );
+
+        it('should return the origin', function() {
+            const origin = delegate.getOrigin();
+
+            should.exist( origin );
+            origin.length.should.equal( 9 );
+        });
+
+        it('should return the message count', function() {
+            delegate.getMessageCount().should.equal( 0 );
+            delegate.createRequestWrapper();
+            delegate.getMessageCount().should.equal( 1 );
+            delegate.createRequestWrapper();
+            delegate.getMessageCount().should.equal( 2 );
+        });
     });
 
     describe('#wrappers', function() {
-        it('should return a standard request wrapper');
+        const delegate = new SocketMessageDelegate( createOptions() );
+
+        it('should return a standard request wrapper', function() {
+            const wrapper = delegate.createRequestWrapper();
+            should.exist( wrapper );
+            should.exist( wrapper.mid );
+            should.exist( wrapper.ts );
+            Object.keys( wrapper ).length.should.equal( 2 );
+        });
 
         it('should return a standard response wrapper');
 
