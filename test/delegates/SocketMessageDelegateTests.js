@@ -83,7 +83,7 @@ describe('SocketMessageDelegate', function() {
             const m1 = delegate.createMessageId();
 
             should.exist( m1 );
-            m1.length.should.equal( 24 );
+            m1.length.should.equal( 26 );
             delegate.getMessageCount().should.equal( 1 );
 
             const m2 = delegate.createMessageId();
