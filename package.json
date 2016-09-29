@@ -26,7 +26,7 @@
     "commander": "^2.9.0",
     "datetimejs": "^0.3.4",
     "express-mocks-http": "0.0.11",
-    "lodash": "^4.9",
+    "lodash": "^4.16.2",
     "node-uuid": "^1.4.7",
     "simple-node-logger": "^0.93.12",
     "superagent": "^2.3.0",
