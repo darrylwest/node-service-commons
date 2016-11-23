@@ -27,9 +27,9 @@
     "datetimejs": "^0.3.4",
     "express-mocks-http": "0.0.11",
     "lodash": "^4.16.2",
-    "node-uuid": "^1.4.7",
     "simple-node-logger": "^0.93.12",
     "superagent": "^2.3.0",
+    "uuid": "^3.0.0",
     "validator": "^6.0.0"
   },
   "devDependencies": {
