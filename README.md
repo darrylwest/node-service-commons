@@ -1,12 +1,11 @@
 # Node Service Commons
 
-``` 
- _ _         _        ___                               ___                                  
-| \ | ___  _| | ___  / __> ___  _ _  _ _ <_> ___  ___  |  _> ___ ._ _ _ ._ _ _  ___ ._ _  ___
-|   |/ . \/ . |/ ._> \__ \/ ._>| '_>| | || |/ | '/ ._> | <__/ . \| ' ' || ' ' |/ . \| ' |<_-<
-|_\_|\___/\___|\___. <___/\___.|_|  |__/ |_|\_|_.\___. `___/\___/|_|_|_||_|_|_|\___/|_|_|/__/
-
-```
+<pre style="background-color:black;color:white;">
+                     __                      _                            
+ |\ |  _   _|  _    (_   _  ._   o  _  _    /   _  ._ _  ._ _   _  ._   _ 
+ | \| (_) (_| (/_   __) (/_ | \/ | (_ (/_   \_ (_) | | | | | | (_) | | _> 
+                                                                          
+</pre>
 
 An MVC platform of common JSON/REST services for node / web applications implemented for classical instantiation and inheritance.
 
@@ -18,11 +17,11 @@ The Node Service Commons is a set of components that support REST / web service 
 
 _Requires minimum node 4.  If you are using an older version of node, please use the pre-4.0 branch._
 
-## Features
+### Features
 
 * use either uuid or ulid for key generation, set in configuration
 * enables web-socket message layer
-* includes default docker containerization using alpine distro
+* includes default docker containerization
 * includes start/status and graceful shutdown hooks
 * brings order to the chaos
 
