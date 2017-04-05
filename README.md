@@ -166,4 +166,4 @@ TODO:
 - example of method overrides
 
 - - -
-<p><small><em>Copyright © 2014-2016, rain city software | Version 0.91.31</em></small></p>
+<p><small><em>Copyright © 2014-2016, rain city software | Version 0.91.33</em></small></p>
