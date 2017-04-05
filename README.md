@@ -1,5 +1,13 @@
 # Node Service Commons
-- - -
+
+```                                                                                               
+ _______                    __                  ______ 
+|     __|.-----.----.--.--.|__|.----.-----.    |      |.-----.--------.--------.-----.-----.-----.
+|__     ||  -__|   _|  |  ||  ||  __|  -__|    |   ---||  _  |        |        |  _  |     |__ --|
+|_______||_____|__|  \___/ |__||____|_____|    |______||_____|__|__|__|__|__|__|_____|__|__|_____|
+
+```
+
 An MVC platform of common JSON/REST services for node / web applications implemented for classical instantiation and inheritance.
 
 [![NPM version](https://badge.fury.io/js/node-service-commons.svg)](http://badge.fury.io/js/node-service-commons) [![Build Status](https://travis-ci.org/darrylwest/node-service-commons.svg?branch=master)](https://travis-ci.org/darrylwest/node-service-commons) [![Dependency Status](https://david-dm.org/darrylwest/node-service-commons.svg)](https://david-dm.org/darrylwest/node-service-commons)
@@ -166,4 +174,4 @@ TODO:
 - example of method overrides
 
 - - -
-<p><small><em>Copyright © 2014-2017, rain city software | Version 0.91.34</em></small></p>
+<p><small><em>Copyright © 2014-2017, rain city software | Version 0.91.35</em></small></p>
