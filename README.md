@@ -19,10 +19,8 @@ _Requires minimum node 4.  If you are using an older version of node, please use
 
 ### Features
 
-* use either uuid or ulid for key generation, set in configuration
-* enables web-socket message layer
-* includes default docker containerization
-* includes start/status and graceful shutdown hooks
+* includes start and graceful shutdown hooks
+* domain based key generation for no-sql databases
 * brings order to the chaos
 
 ## Controllers Package
