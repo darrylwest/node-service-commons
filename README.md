@@ -1,11 +1,11 @@
 # Node Service Commons
 
-<pre style="background-color:black;color:white;">
+```
                      __                      _                            
  |\ |  _   _|  _    (_   _  ._   o  _  _    /   _  ._ _  ._ _   _  ._   _ 
  | \| (_) (_| (/_   __) (/_ | \/ | (_ (/_   \_ (_) | | | | | | (_) | | _> 
                                                                           
-</pre>
+```
 
 An MVC platform of common JSON/REST services for node / web applications implemented for classical instantiation and inheritance.
 
