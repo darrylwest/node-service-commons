@@ -5,7 +5,7 @@
  * @created: 8/11/14 10:36 AM
  */
 const dash = require("lodash" ),
-    uuid = require('node-uuid'),
+    uuid = require('uuid'),
     AbstractBaseModel = require('../../lib/models/AbstractBaseModel');
 
 const TestDataset = function() {
