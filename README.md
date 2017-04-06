@@ -1,14 +1,27 @@
 # Node Service Commons
-- - -
+
+```
+                     __                      _                            
+ |\ |  _   _|  _    (_   _  ._   o  _  _    /   _  ._ _  ._ _   _  ._   _ 
+ | \| (_) (_| (/_   __) (/_ | \/ | (_ (/_   \_ (_) | | | | | | (_) | | _> 
+                                                                          
+```
+
 An MVC platform of common JSON/REST services for node / web applications implemented for classical instantiation and inheritance.
 
 [![NPM version](https://badge.fury.io/js/node-service-commons.svg)](http://badge.fury.io/js/node-service-commons) [![Build Status](https://travis-ci.org/darrylwest/node-service-commons.svg?branch=master)](https://travis-ci.org/darrylwest/node-service-commons) [![Dependency Status](https://david-dm.org/darrylwest/node-service-commons.svg)](https://david-dm.org/darrylwest/node-service-commons)
 
 ## Introduction
 
-The Node Service Commons is a set of components that support REST / web service containers.  The MVC implementation includes factories, data access base classes, delegates, web and data service classes.  Implementation uses classical construction (but not ECMA6 classes yet).
+The Node Service Commons is a set of components that support REST / web service containers.  The MVC implementation includes factories, data access base objects, delegates, web and data service objects.  Implementation uses Crockford-style classical construction (but no ECMA6 classes).
 
-_Requires node 4/5.  If you are using an older version of node, please use the pre-4.0 branch._
+_Requires minimum node 4.  If you are using an older version of node, please use the pre-4.0 branch._
+
+### Features
+
+* includes start and graceful shutdown hooks
+* domain based key generation for no-sql databases
+* brings order to the chaos
 
 ## Controllers Package
 
@@ -166,4 +179,4 @@ TODO:
 - example of method overrides
 
 - - -
-<p><small><em>Copyright © 2014-2016, rain city software | Version 0.91.26</em></small></p>
+<p><small><em>Copyright © 2014-2017, rain city software | Version 0.91.35</em></small></p>
