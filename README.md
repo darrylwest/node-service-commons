@@ -21,6 +21,7 @@ _Requires minimum node 4.  If you are using an older version of node, please use
 
 * includes start and graceful shutdown hooks
 * domain based key generation for no-sql databases
+* includes docker file to help containerize your service applications
 * brings order to the chaos
 
 ## Controllers Package
