@@ -16,6 +16,8 @@ An MVC platform of common JSON/REST services for node / web applications impleme
 
 The Node Service Commons is a set of components that support REST / web service containers.  The MVC implementation includes factories, data access base objects, delegates, web and data service objects.  Implementation uses Crockford-style classical construction (but no ECMA6 classes).  The associated docker container helps create a containerized implementation.
 
+_Node 6.x is required for the "future" branch. Future changes include modifying the REST end points to use standard verbs and reimplementation using promises, es6, web-sockets etc. The current version will be preserved in a pre-6.0 branch._
+
 _Requires minimum node 4.  If you are using an older version of node, please use the pre-4.0 branch._
 
 ### Features
@@ -187,4 +189,4 @@ TODO:
 - example of method overrides
 
 - - -
-<p><small><em>Copyright © 2014-2017, rain city software | Version 0.91.36</em></small></p>
+<p><small><em>Copyright © 2014-2017, rain city software | Version 0.91.37</em></small></p>
