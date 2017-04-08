@@ -21,6 +21,9 @@ test-short:
 	@( [ -d node_modules ] || make npm )
 	@( $(MOCHA) --reporter dot $(TESTFILES) )
 
+container:
+	@( cd docker && ./build.sh && docker images )
+
 watch:
 	@( ./watcher.js )
 
