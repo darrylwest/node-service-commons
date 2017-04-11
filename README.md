@@ -163,6 +163,12 @@ Accessing web status shows the warning and error count.  Here is a sample status
 
 _This format may change in future versions but typically to add new attributes._
 
+## Docker Container
+
+
+
+
+
 ## Mocks
 
 - MockExpress
@@ -180,4 +186,4 @@ TODO:
 - example of method overrides
 
 - - -
-<p><small><em>Copyright © 2014-2017, rain city software | Version 0.91.35</em></small></p>
+<p><small><em>Copyright © 2014-2017, rain city software | Version 0.91.36</em></small></p>
