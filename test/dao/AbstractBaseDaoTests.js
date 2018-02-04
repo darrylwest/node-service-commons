@@ -341,8 +341,8 @@ describe('AbstractBaseDao', function() {
     });
 
     describe('updateAndExpire', function() {
-        const dao = new AbstractBaseDao( createOptions()),
-            client = new MockClient();
+        const dao = new AbstractBaseDao( createOptions());
+        const client = new MockClient();
 
         it('should update or insert a record and set expire', function(done) {
             const ref = new Dataset().createModel();
@@ -359,7 +359,7 @@ describe('AbstractBaseDao', function() {
                 done();
             };
 
-            const ttl = 20;
+            const ttl = 1;
             dao.updateAndExpire( client, ref, ttl, callback );
         });
     });

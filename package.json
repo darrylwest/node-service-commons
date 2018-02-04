@@ -1,6 +1,6 @@
 {
   "name": "node-service-commons",
-  "version": "0.91.39",
+  "version": "0.91.40",
   "description": "An MVC platform of common REST services for node / web applications implemented for classical instantiation and inheritance.",
   "main": "./index.js",
   "repository": {
@@ -34,12 +34,18 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "mocha": "^3.1.0",
+    "mocha": "^5.0.0",
     "mock-redis-client": "^0.91.13",
-    "jshint": "^2.9.2",
+    "jshint": "^2.9.5",
     "jshint-stylish": "^2.2.1",
     "random-fixture-data": "^2.0.19"
   },
+  "files": [
+    "index.js",
+    "lib/",
+    "test/mocks/",
+    "test/fixtures"
+  ],
   "author": "darryl.west@raincitysoftware.com",
   "license": "Apache-2.0",
   "homepage": "https://github.com/darrylwest/node-service-commons"
