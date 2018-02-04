@@ -22,25 +22,25 @@
     "connect"
   ],
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "commander": "^2.9.0",
+    "body-parser": "^1.18.2",
+    "commander": "^2.13.0",
     "datetimejs": "^0.3.4",
     "express-mocks-http": "0.0.11",
     "lodash": "^4.16.2",
     "simple-node-logger": "^0.93.36",
-    "superagent": "^3.5.2",
-    "validator": "^7.0.0",
-    "uuid": "^3.0.0"
+    "superagent": "^3.8.2",
+    "validator": "^9.4.0",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
+    "chai": "^4.1.2",
     "mocha": "^3.1.0",
     "mock-redis-client": "^0.91.13",
     "jshint": "^2.9.2",
-    "jshint-stylish": "^2.2.0",
-    "random-fixture-data": "^2.0.17"
+    "jshint-stylish": "^2.2.1",
+    "random-fixture-data": "^2.0.19"
   },
   "author": "darryl.west@raincitysoftware.com",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "homepage": "https://github.com/darrylwest/node-service-commons"
 }
