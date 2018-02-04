@@ -196,4 +196,4 @@ TODO:
 - create demo implementation
 - example of method overrides
 
-<p><small><em>Copyright © 2014-2017, rain city software | Version 0.91.37</em></small></p>
+<p><small><em>Copyright © 2014-2018, rain city software | Version 0.91.38</em></small></p>
